@@ -3,7 +3,7 @@ import com.mongodb.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Database {
+public class Database implements AutoCloseable{
     private DB db;
     private MongoClient dbClient;
     private DBCollection dbCollection;
@@ -41,5 +41,10 @@ public class Database {
     {
         //clean up resources
         this.dbClient.close();
+    }
+
+    @Override
+    public void close() throws Exception {
+        this.Dispose();
     }
 }

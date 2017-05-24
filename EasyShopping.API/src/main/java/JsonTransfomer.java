@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public class JsonTransfomer implements ResponseTransformer {
 
-    private Gson gson = new Gson();
+    private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     @Override
     public String render(Object model) throws Exception {
