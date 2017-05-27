@@ -1,8 +1,16 @@
 import com.mongodb.*;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.result.UpdateResult;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static com.mongodb.client.model.Filters.eq;
 
 public class Database implements AutoCloseable{
     private MongoClient dbClient;
@@ -26,6 +34,24 @@ public class Database implements AutoCloseable{
         BasicDBObject query = new BasicDBObject("name", name);
         DBObject dbo = dbCollection.findOne(query);
         return dbo;
+    }
+
+    DBObject FindOneById(String id)
+    {
+        BasicDBObject query = new BasicDBObject();
+        query.put("_id", new ObjectId(id));
+        return dbCollection.findOne(query);
+    }
+
+    UpdateResult IncrementLikedValue(String id)
+    {
+        MongoDatabase db2 = dbClient.getDatabase("recipesDB");
+        Bson filter = new Document("_id", new ObjectId(id));
+        MongoCollection<org.bson.Document> coll = db2.getCollection("recipes");
+        BasicDBObject dbo = (BasicDBObject) FindOneById(id);
+        int lastLikes = Integer.parseInt(dbo.getString("liked"));
+        return coll.updateOne(filter, new Document("$set", new Document("liked", lastLikes + 1)));
+
     }
 
     List<Recipe> FindAll()

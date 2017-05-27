@@ -1,6 +1,9 @@
 import com.mongodb.DBObject;
+import com.mongodb.client.result.UpdateResult;
 
-import static spark.Spark.get;
+import javax.xml.crypto.Data;
+
+import static spark.Spark.*;
 
 
 class RecipeResource {
@@ -24,6 +27,15 @@ class RecipeResource {
             }
 
         }, new JsonTransfomer());
+
+        put("/recipes/update/:id", "application/json", (request, response) ->{
+
+            try(final Database db = new Database()) {
+                String id = request.params(":id");
+                UpdateResult updateResult = db.IncrementLikedValue(id);
+                return updateResult.getModifiedCount();
+            }
+        });
 
         get("/test", (req, res) -> "TEST");
     }

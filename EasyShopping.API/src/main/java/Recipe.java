@@ -1,10 +1,7 @@
 import com.mongodb.BasicDBObject;
 
 import javax.swing.text.Document;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 public class Recipe {
 
@@ -16,7 +13,8 @@ public class Recipe {
     private String prepTime;
     private String imageURL;
     private List<Ingredient> ingredients;
-    private List<Document> steps;
+    private List<String> steps;
+    private int liked;
 
     public Recipe() {}
 
@@ -28,8 +26,9 @@ public class Recipe {
         this.difficulty = dbObject.getString("difficulty");
         this.prepTime = dbObject.getString("prep_time");
         this.imageURL = dbObject.getString("imageURL");
-        this.steps = (List<Document>) dbObject.get("steps");
+        this.steps = (List<String>) dbObject.get("steps");
         this.ingredients = (List<Ingredient>) dbObject.get("ingredients");
+        this.liked = Integer.parseInt(dbObject.getString("liked"));
     }
 
 
