@@ -1,5 +1,5 @@
 import com.mongodb.DBObject;
-import java.util.List;
+
 import static spark.Spark.get;
 
 
@@ -24,6 +24,8 @@ class RecipeResource {
             }
 
         }, new JsonTransfomer());
+
+        get("/test", (req, res) -> "TEST");
     }
 
 }

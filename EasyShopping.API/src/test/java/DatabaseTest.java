@@ -1,7 +1,7 @@
-import static org.junit.Assert.*;
-
 import com.mongodb.MongoClient;
-import org.junit.*;
+import org.junit.Test;
+
+import static org.junit.Assert.assertNotNull;
 
 public class DatabaseTest {
     @Test

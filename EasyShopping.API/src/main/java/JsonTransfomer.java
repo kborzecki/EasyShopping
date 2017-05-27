@@ -1,5 +1,5 @@
-
-import com.google.gson.*;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import spark.Response;
 import spark.ResponseTransformer;
 

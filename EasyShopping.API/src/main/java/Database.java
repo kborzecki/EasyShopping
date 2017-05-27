@@ -1,34 +1,38 @@
 import com.mongodb.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Database implements AutoCloseable{
-    private DB db;
     private MongoClient dbClient;
     private DBCollection dbCollection;
 
     Database()
     {
-        String URI = "mongodb://127.0.0.1:27017";
-        this.dbClient = new MongoClient();
-        this.db = dbClient.getDB("recipesDB");
+        String passStr = "f37c5662@#";
+        char[] passChar = passStr.toCharArray();
+        MongoCredential credential = MongoCredential.createCredential("myAdmin", "admin", passChar);
+        ServerAddress serverAddress = new ServerAddress("bornt2.myqnapcloud.com", 27017);
+
+        this.dbClient = new MongoClient(serverAddress, Arrays.asList(credential));
+        DB db = dbClient.getDB("recipesDB");
         this.dbCollection = db.getCollection("recipes");
 
     }
 
-    public DBObject FindOneByName(String name)
+    DBObject FindOneByName(String name)
     {
         BasicDBObject query = new BasicDBObject("name", name);
         DBObject dbo = dbCollection.findOne(query);
-        System.out.println(dbo);
         return dbo;
     }
 
-    public List<Recipe> FindAll()
+    List<Recipe> FindAll()
     {
         List<Recipe> recipes = new ArrayList<>();
         DBCursor dbObjects = dbCollection.find();
+
         while(dbObjects.hasNext())
         {
             DBObject dbObject = dbObjects.next();
@@ -36,6 +40,8 @@ public class Database implements AutoCloseable{
         }
         return recipes;
     }
+
+
 
     void Dispose()
     {
