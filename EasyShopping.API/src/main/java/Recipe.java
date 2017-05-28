@@ -1,6 +1,5 @@
 import com.mongodb.BasicDBObject;
 
-import javax.swing.text.Document;
 import java.util.List;
 
 public class Recipe {

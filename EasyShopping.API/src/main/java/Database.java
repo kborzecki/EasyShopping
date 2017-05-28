@@ -6,24 +6,30 @@ import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.mongodb.client.model.Filters.eq;
-
 public class Database implements AutoCloseable{
     private MongoClient dbClient;
     private DBCollection dbCollection;
+    private MongoDatabase db2;
 
-    Database()
+    Database() throws IOException
     {
-        String passStr = "f37c5662@#";
+        DatabaseProperties properties = new DatabaseProperties();
+        String passStr = properties.getValue("mongoPass");
+        String user = properties.getValue("mongoUser");
+        String serverAddressStr = properties.getValue("serverAddress");
+
         char[] passChar = passStr.toCharArray();
-        MongoCredential credential = MongoCredential.createCredential("myAdmin", "admin", passChar);
-        ServerAddress serverAddress = new ServerAddress("bornt2.myqnapcloud.com", 27017);
+
+        MongoCredential credential = MongoCredential.createCredential(user, "admin", passChar);
+        ServerAddress serverAddress = new ServerAddress(serverAddressStr, 27017);
 
         this.dbClient = new MongoClient(serverAddress, Arrays.asList(credential));
+        db2 = dbClient.getDatabase("recipesDB");
         DB db = dbClient.getDB("recipesDB");
         this.dbCollection = db.getCollection("recipes");
 
@@ -45,7 +51,6 @@ public class Database implements AutoCloseable{
 
     UpdateResult IncrementLikedValue(String id)
     {
-        MongoDatabase db2 = dbClient.getDatabase("recipesDB");
         Bson filter = new Document("_id", new ObjectId(id));
         MongoCollection<org.bson.Document> coll = db2.getCollection("recipes");
         BasicDBObject dbo = (BasicDBObject) FindOneById(id);
@@ -53,6 +58,7 @@ public class Database implements AutoCloseable{
         return coll.updateOne(filter, new Document("$set", new Document("liked", lastLikes + 1)));
 
     }
+
 
     List<Recipe> FindAll()
     {

@@ -14,9 +14,9 @@ class RecipeResource {
     }
     private void SetUpEndPoints()
     {
-        get("/recipes/:name", "application/json", (request, response) -> {
+        get("/recipes/:id", "application/json", (request, response) -> {
             final Database db = new Database();
-            DBObject dbo = db.FindOneByName(request.params(":name"));
+            DBObject dbo = db.FindOneById(request.params(":id"));
             db.Dispose();
             return dbo;
         });
