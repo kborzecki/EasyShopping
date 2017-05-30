@@ -7,7 +7,7 @@ class DatabaseProperties {
 
     private InputStream inputStream;
 
-    public String getValue(String value) throws IOException {
+    String getValue(String value) throws IOException {
         String result = "";
         try {
             Properties prop = new Properties();
@@ -24,8 +24,9 @@ class DatabaseProperties {
             result += prop.getProperty(value);
 
         } catch (Exception e) {
-            System.out.println("Exception: " + e);
+            e.printStackTrace();
         } finally {
+            assert inputStream != null;
             inputStream.close();
         }
         return result;

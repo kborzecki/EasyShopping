@@ -1,9 +1,8 @@
-import com.mongodb.DBObject;
 import com.mongodb.client.result.UpdateResult;
 
-import javax.xml.crypto.Data;
+import static spark.Spark.get;
+import static spark.Spark.put;
 
-import static spark.Spark.*;
 
 
 class RecipeResource {
@@ -16,14 +15,12 @@ class RecipeResource {
     {
         get("/recipes/:id", "application/json", (request, response) -> {
             final Database db = new Database();
-            DBObject dbo = db.FindOneById(request.params(":id"));
-            db.Dispose();
-            return dbo;
+            return db.FindOneById(request.params(":id"));
         });
 
         get("/recipes", "application/json", (request, response) -> {
             try (final Database db = new Database()){
-                return db.FindAll();
+                return db.FindAll(false);
             }
 
         }, new JsonTransfomer());

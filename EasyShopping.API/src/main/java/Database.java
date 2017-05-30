@@ -38,8 +38,7 @@ public class Database implements AutoCloseable{
     DBObject FindOneByName(String name)
     {
         BasicDBObject query = new BasicDBObject("name", name);
-        DBObject dbo = dbCollection.findOne(query);
-        return dbo;
+        return dbCollection.findOne(query);
     }
 
     DBObject FindOneById(String id)
@@ -56,11 +55,15 @@ public class Database implements AutoCloseable{
         BasicDBObject dbo = (BasicDBObject) FindOneById(id);
         int lastLikes = Integer.parseInt(dbo.getString("liked"));
         return coll.updateOne(filter, new Document("$set", new Document("liked", lastLikes + 1)));
+    }
 
+    DBObject FindFirstRecipe()
+    {
+        return dbCollection.findOne();
     }
 
 
-    List<Recipe> FindAll()
+    List<Recipe> FindAll(boolean allValues)
     {
         List<Recipe> recipes = new ArrayList<>();
         DBCursor dbObjects = dbCollection.find();
@@ -68,14 +71,14 @@ public class Database implements AutoCloseable{
         while(dbObjects.hasNext())
         {
             DBObject dbObject = dbObjects.next();
-            recipes.add(new Recipe((BasicDBObject) dbObject));
+            recipes.add(new Recipe((BasicDBObject) dbObject, allValues));
         }
         return recipes;
     }
 
 
 
-    void Dispose()
+    private void Dispose()
     {
         //clean up resources
         this.dbClient.close();

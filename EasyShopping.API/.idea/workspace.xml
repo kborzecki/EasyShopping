@@ -2,13 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03658681-046d-458e-b7df-876dad35deff" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/DatabaseProperties.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_restassured_json_path_2_9_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_restassured_rest_assured_2_9_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_restassured_rest_assured_common_2_9_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_restassured_xml_path_2_9_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_6.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_1_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_3_4.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_3_2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpmime_4_5_1.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ccil_cowan_tagsoup_tagsoup_1_2_1.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_groovy_groovy_2_4_4.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_groovy_groovy_json_2_4_4.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_groovy_groovy_xml_2_4_4.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_library_1_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/RestApiTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Database.class" afterPath="$PROJECT_DIR$/target/classes/Database.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/DatabaseProperties.class" afterPath="$PROJECT_DIR$/target/classes/DatabaseProperties.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Recipe.class" afterPath="$PROJECT_DIR$/target/classes/Recipe.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/RecipeResource.class" afterPath="$PROJECT_DIR$/target/classes/RecipeResource.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/DatabaseTest.class" afterPath="$PROJECT_DIR$/target/test-classes/DatabaseTest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EasyShopping.API.iml" afterPath="$PROJECT_DIR$/EasyShopping.API.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Database.java" afterPath="$PROJECT_DIR$/src/main/java/Database.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/DatabaseProperties.java" afterPath="$PROJECT_DIR$/src/main/java/DatabaseProperties.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Recipe.java" afterPath="$PROJECT_DIR$/src/main/java/Recipe.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/RecipeResource.java" afterPath="$PROJECT_DIR$/src/main/java/RecipeResource.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/DatabaseTest.java" afterPath="$PROJECT_DIR$/src/test/java/DatabaseTest.java" />
@@ -29,13 +47,15 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Database.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Database.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Database.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="49" column="5" lean-forward="true" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+            <state relative-caret-position="184">
+              <caret line="46" column="43" lean-forward="false" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2080#2081#0" expanded="true" />
+                <element signature="e#2125#2126#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -44,8 +64,8 @@
       <file leaf-file-name="DatabaseProperties.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/DatabaseProperties.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="39" lean-forward="true" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
+            <state relative-caret-position="0">
+              <caret line="3" column="26" lean-forward="false" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -63,11 +83,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RecipeResource.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/RecipeResource.java">
+      <file leaf-file-name="RestApiTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/RestApiTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="18" column="62" lean-forward="false" selection-start-line="18" selection-start-column="62" selection-end-line="18" selection-end-column="62" />
+            <state relative-caret-position="207">
+              <caret line="23" column="81" lean-forward="false" selection-start-line="23" selection-start-column="81" selection-end-line="23" selection-end-column="81" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -75,12 +95,24 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="241">
+              <caret line="108" column="36" lean-forward="true" selection-start-line="108" selection-start-column="36" selection-end-line="108" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="DatabaseTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/DatabaseTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="238">
+              <caret line="35" column="20" lean-forward="false" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -88,9 +120,23 @@
       <file leaf-file-name="Recipe.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Recipe.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="544">
+              <caret line="32" column="78" lean-forward="false" selection-start-line="32" selection-start-column="78" selection-end-line="32" selection-end-column="78" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RecipeResource.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/RecipeResource.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-39">
+              <caret line="7" column="6" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -101,8 +147,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
-        <option value="JUnit4 Test Class" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -110,6 +156,9 @@
     <findStrings>
       <find>Main</find>
       <find>main</find>
+      <find>recipe</find>
+      <find>object</find>
+      <find>httpcodre</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -129,16 +178,17 @@
         <option value="$PROJECT_DIR$/src/main/java/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/Bootstrap.java" />
         <option value="$PROJECT_DIR$/src/main/java/JsonTransfomer.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/Recipe.java" />
         <option value="$PROJECT_DIR$/src/main/java/Ingredient.java" />
-        <option value="$PROJECT_DIR$/src/test/java/DatabaseTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/config.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/DatabaseProperties.java" />
         <option value="$PROJECT_DIR$/src/main/resources/.gitignore" />
         <option value="$PROJECT_DIR$/src/main/resources/config.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/Recipe.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DatabaseProperties.java" />
         <option value="$PROJECT_DIR$/src/main/java/Database.java" />
+        <option value="$PROJECT_DIR$/src/test/java/DatabaseTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/RecipeResource.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/RestApiTest.java" />
       </list>
     </option>
   </component>
@@ -186,20 +236,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="EasyShopping.API" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EasyShopping.API" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EasyShopping.API" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="target" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -301,8 +337,10 @@
     <key name="CreateTestDialog.RecentsKey">
       <recent name="" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\juice\OneDrive\Dokumenty\Projekt Java\EasyShopping\EasyShopping.API\src\main\resources" />
+      <recent name="C:\Users\juice\OneDrive\Dokumenty\Projekt Java\EasyShopping\EasyShopping.API\src\main\java" />
+      <recent name="C:\Users\juice\OneDrive\Dokumenty\Projekt Java\EasyShopping" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\juice\OneDrive\Dokumenty\Projekt Java\EasyShopping\EasyShopping.API\target" />
@@ -311,10 +349,8 @@
       <recent name="" />
       <recent name="groovy.util.GroovyTestCase" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\juice\OneDrive\Dokumenty\Projekt Java\EasyShopping\EasyShopping.API\src\main\resources" />
-      <recent name="C:\Users\juice\OneDrive\Dokumenty\Projekt Java\EasyShopping\EasyShopping.API\src\main\java" />
-      <recent name="C:\Users\juice\OneDrive\Dokumenty\Projekt Java\EasyShopping" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="" />
     </key>
   </component>
   <component name="RestClientSettings">
@@ -851,7 +887,50 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Bootstrap">
+  <component name="RunManager" selected="JUnit.UnitTestAll">
+    <configuration default="false" name="DatabaseTest.shouldIncreaseLikedValueByOne" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="EasyShopping.API" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="DatabaseTest" />
+      <option name="METHOD_NAME" value="shouldIncreaseLikedValueByOne" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <envs />
+      <dir value="$PROJECT_DIR$" />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="RestApiTest.givenRecipeDoesNotExist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="EasyShopping.API" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="RestApiTest" />
+      <option name="METHOD_NAME" value="givenRecipeDoesNotExist" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
     <configuration default="false" name="Bootstrap" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="Bootstrap" />
@@ -867,25 +946,24 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="DatabaseTest.shouldUpdateLikedValueOfRecipe" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="RestApiTest.shouldGetARecipeFromApi" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="EasyShopping.API" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="DatabaseTest" />
-      <option name="METHOD_NAME" value="shouldUpdateLikedValueOfRecipe" />
+      <option name="MAIN_CLASS_NAME" value="RestApiTest" />
+      <option name="METHOD_NAME" value="shouldGetARecipeFromApi" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="wholeProject" />
+        <value defaultName="singleModule" />
       </option>
       <envs />
-      <dir value="$PROJECT_DIR$" />
       <patterns />
       <method />
     </configuration>
@@ -1227,6 +1305,28 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
+    <configuration default="false" name="UnitTestAll" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="EasyShopping.API" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="directory" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <envs />
+      <dir value="$PROJECT_DIR$" />
+      <patterns />
+      <method />
+    </configuration>
     <configuration default="false" name="Unnamed" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -1251,38 +1351,20 @@
         <option name="Maven.BeforeRunTask" enabled="true" file="$USER_HOME$/IdeaProjects/shoppinglist/pom.xml" goal="" />
       </method>
     </configuration>
-    <configuration default="false" name="UnitTestAll" type="JUnit" factoryName="JUnit">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="EasyShopping.API" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="directory" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="wholeProject" />
-      </option>
-      <envs />
-      <dir value="$PROJECT_DIR$" />
-      <patterns />
-      <method />
-    </configuration>
-    <list size="4">
-      <item index="0" class="java.lang.String" itemvalue="Maven.Unnamed" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.UnitTestAll" />
-      <item index="2" class="java.lang.String" itemvalue="Application.Bootstrap" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.DatabaseTest.shouldUpdateLikedValueOfRecipe" />
+    <list size="6">
+      <item index="0" class="java.lang.String" itemvalue="JUnit.UnitTestAll" />
+      <item index="1" class="java.lang.String" itemvalue="Maven.Unnamed" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.DatabaseTest.shouldIncreaseLikedValueByOne" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.RestApiTest.givenRecipeDoesNotExist" />
+      <item index="4" class="java.lang.String" itemvalue="Application.Bootstrap" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.RestApiTest.shouldGetARecipeFromApi" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Application.Bootstrap" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.DatabaseTest.shouldUpdateLikedValueOfRecipe" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.RestApiTest.shouldGetARecipeFromApi" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.RestApiTest.givenRecipeDoesNotExist" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.DatabaseTest.shouldIncreaseLikedValueByOne" />
+        <item index="3" class="java.lang.String" itemvalue="Application.Bootstrap" />
       </list>
     </recent_temporary>
   </component>
@@ -1311,7 +1393,9 @@
       <workItem from="1495876849537" duration="7948000" />
       <workItem from="1495920221890" duration="4789000" />
       <workItem from="1495972332658" duration="2195000" />
-      <workItem from="1496070258300" duration="4680000" />
+      <workItem from="1496070258300" duration="6654000" />
+      <workItem from="1496129540938" duration="629000" />
+      <workItem from="1496174815645" duration="3232000" />
     </task>
     <task id="LOCAL-00001" summary="Updated Rcipe class, added Ingredient class, added credentials for mongodb">
       <created>1495884906105</created>
@@ -1331,58 +1415,56 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="DatabaseTest_shouldUpdateLikedValueOfRecipe - 2017.05.28 at 14h 12m 24s.xml">
-      <configuration name="DatabaseTest.shouldUpdateLikedValueOfRecipe" configurationId="JUnit" />
+    <history-entry file="RestApiTest_shouldGetARecipeFromApi - 2017.05.30 at 22h 53m 18s.xml">
+      <configuration name="RestApiTest.shouldGetARecipeFromApi" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UnitTestAll - 2017.05.24 at 12h 35m 17s.xml">
+    <history-entry file="UnitTestAll - 2017.05.30 at 22h 46m 53s.xml">
       <configuration name="UnitTestAll" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UnitTestAll - 2017.05.24 at 12h 37m 03s.xml">
+    <history-entry file="UnitTestAll - 2017.05.30 at 22h 49m 06s.xml">
       <configuration name="UnitTestAll" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UnitTestAll - 2017.05.24 at 12h 40m 59s.xml">
+    <history-entry file="UnitTestAll - 2017.05.30 at 22h 50m 05s.xml">
       <configuration name="UnitTestAll" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UnitTestAll - 2017.05.24 at 12h 41m 21s.xml">
+    <history-entry file="UnitTestAll - 2017.05.30 at 22h 50m 59s.xml">
       <configuration name="UnitTestAll" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UnitTestAll - 2017.05.25 at 08h 46m 02s.xml">
+    <history-entry file="UnitTestAll - 2017.05.30 at 22h 51m 34s.xml">
       <configuration name="UnitTestAll" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UnitTestAll - 2017.05.28 at 14h 05m 31s.xml">
+    <history-entry file="UnitTestAll - 2017.05.30 at 22h 52m 53s.xml">
       <configuration name="UnitTestAll" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UnitTestAll - 2017.05.28 at 14h 06m 08s.xml">
+    <history-entry file="UnitTestAll - 2017.05.30 at 22h 53m 32s.xml">
       <configuration name="UnitTestAll" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UnitTestAll - 2017.05.28 at 14h 07m 19s.xml">
+    <history-entry file="UnitTestAll - 2017.05.30 at 22h 58m 35s.xml">
       <configuration name="UnitTestAll" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Unnamed - 2017.05.24 at 12h 33m 18s.xml">
-      <configuration name="Unnamed" configurationId="JUnit" />
+    <history-entry file="UnitTestAll - 2017.05.30 at 22h 59m 33s.xml">
+      <configuration name="UnitTestAll" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39235000" />
+    <option name="totallyTimeSpent" value="45070000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34703946" sideWeight="0.42459735" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34703946" sideWeight="0.4114202" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32763976" sideWeight="0.4948605" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34703946" sideWeight="0.5754026" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32894737" sideWeight="0.49707174" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32894737" sideWeight="0.50292826" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21083455" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.49706313" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1395,11 +1477,31 @@
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329429" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32763976" sideWeight="0.4948605" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40174672" sideWeight="0.46190476" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.49706313" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -1411,21 +1513,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/Database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/JsonTransfomer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1447,7 +1539,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="47" lean-forward="false" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1493,6 +1587,8 @@
           <caret line="47" column="23" lean-forward="false" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2080#2081#0" expanded="true" />
+            <element signature="e#2125#2126#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1501,7 +1597,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="14" column="30" lean-forward="false" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1547,6 +1645,8 @@
           <caret line="47" column="23" lean-forward="false" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2080#2081#0" expanded="true" />
+            <element signature="e#2125#2126#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1555,7 +1655,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="14" column="30" lean-forward="true" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1591,6 +1693,8 @@
           <caret line="19" column="46" lean-forward="true" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2080#2081#0" expanded="true" />
+            <element signature="e#2125#2126#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1599,7 +1703,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="15" column="25" lean-forward="false" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1687,35 +1793,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Recipe.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="80" column="50" lean-forward="false" selection-start-line="80" selection-start-column="50" selection-end-line="80" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/config.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/target/config.properties" />
     <entry file="jar://$MAVEN_REPOSITORY$/com/sparkjava/spark-core/2.5/spark-core-2.5.jar!/spark/http/matching/MatcherFilter.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1727,10 +1809,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/DatabaseTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Recipe.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state relative-caret-position="544">
+          <caret line="32" column="78" lean-forward="false" selection-start-line="32" selection-start-column="78" selection-end-line="32" selection-end-column="78" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="108" column="36" lean-forward="true" selection-start-line="108" selection-start-column="36" selection-end-line="108" selection-end-column="36" />
           <folding />
         </state>
       </provider>
@@ -1743,20 +1835,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/RecipeResource.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/DatabaseProperties.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="18" column="62" lean-forward="false" selection-start-line="18" selection-start-column="62" selection-end-line="18" selection-end-column="62" />
+        <state relative-caret-position="0">
+          <caret line="3" column="26" lean-forward="false" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/DatabaseProperties.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/DatabaseTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="39" lean-forward="true" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
+        <state relative-caret-position="238">
+          <caret line="35" column="20" lean-forward="false" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1765,8 +1857,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Database.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="49" column="5" lean-forward="true" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+        <state relative-caret-position="184">
+          <caret line="46" column="43" lean-forward="false" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2080#2081#0" expanded="true" />
+            <element signature="e#2125#2126#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/RecipeResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-39">
+          <caret line="7" column="6" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/RestApiTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="23" column="81" lean-forward="false" selection-start-line="23" selection-start-column="81" selection-end-line="23" selection-end-column="81" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
