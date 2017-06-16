@@ -1,5 +1,6 @@
 package com.example.pk.easyshopping;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -109,7 +110,10 @@ public class RecipesList extends AppCompatActivity {
                     mRecipesAdapter = new RecipesAdapter(RecipesList.this, data, new CustomItemClickListener() {
                         @Override
                         public void onItemClick(View v, int position) {
-                            Toast.makeText(RecipesList.this, data.get(position).recipeID, Toast.LENGTH_LONG).show();
+                            //Toast.makeText(RecipesList.this, data.get(position).recipeID, Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(RecipesList.this, DetailedRecipe.class);
+                            intent.putExtra(Intent.EXTRA_TEXT, data.get(position).recipeID);
+                            startActivity(intent);
                         }
                     });
                 mRecyclerView.setAdapter(mRecipesAdapter);
