@@ -98,7 +98,6 @@ public class DetailedRecipe extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            Log.e("TAG?", "dupa");
             try {
                 JSONObject json_data = new JSONObject(result);
 
@@ -113,11 +112,11 @@ public class DetailedRecipe extends AppCompatActivity {
                 recipeData.recipeLiked = json_data.getInt("liked");
 
                 JSONArray stepsArr = json_data.getJSONArray("steps");
-                ArrayList<String> steps = new ArrayList<>(stepsArr.length());
+                //ArrayList<String> steps = new ArrayList<>();
+                recipeData.recipeSteps = new ArrayList<>();
                 for(int i = 0; i < stepsArr.length(); i++){
-                    steps.add(i, stepsArr.getString(i));
+                    recipeData.recipeSteps.add(stepsArr.getString(i));
                 }
-                recipeData.recipeSteps = steps;
 
                 JSONArray ingredientsArr = json_data.getJSONArray("ingredients");
                 //ArrayList<RecipeIngredientData> ingredients = new ArrayList<>(ingredientsArr.length());
@@ -142,8 +141,31 @@ public class DetailedRecipe extends AppCompatActivity {
                         .placeholder(R.mipmap.ic_error_recipe)
                         .error(R.mipmap.ic_error_recipe)
                         .into(mImageView);
+                mTVRecipeDifficulty.setText("Trudność: " + recipeData.recipeDifficulty);
+                mTVRecipePrepTime.setText("Czas przygotowania: " + recipeData.recipePrepTime);
 
+                StringBuilder ingredientsList = new StringBuilder();
+                for(int i = 0; i < recipeData.recipeIngredients.size(); i++) {
+                    ingredientsList
+                            .append(recipeData.recipeIngredients.get(i).ingredientName)
+                            .append(" -- ")
+                            .append(recipeData.recipeIngredients.get(i).ingredientQuantity)
+                            .append(" ")
+                            .append(recipeData.recipeIngredients.get(i).ingredientQuantityDisplay);
+                    if(i < recipeData.recipeIngredients.size() - 1)
+                        ingredientsList.append("\n");
+                }
+                mTVIngredientsList.setText(ingredientsList.toString());
 
+                StringBuilder stepsList = new StringBuilder();
+                for(int i = 0; i < recipeData.recipeSteps.size(); i++) {
+                    stepsList
+                            .append(recipeData.recipeSteps.get(i))
+                            .append(".");
+                    if(i < recipeData.recipeSteps.size() - 1)
+                        stepsList.append("\n");
+                }
+                mTVRecipeSteps.setText(stepsList.toString());
 
 
 
