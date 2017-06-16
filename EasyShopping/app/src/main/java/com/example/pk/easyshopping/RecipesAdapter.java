@@ -21,11 +21,13 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.MyHolder
 
     private Context context;
     List<BasicRecipeData> data = Collections.emptyList();
+    CustomItemClickListener listener;
 
 
-    public RecipesAdapter(Context context, List<BasicRecipeData> data) {
+    public RecipesAdapter(Context context, List<BasicRecipeData> data, CustomItemClickListener listener) {
         this.context = context;
         this.data = data;
+        this.listener = listener;
     }
 
     @Override
@@ -36,7 +38,14 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.MyHolder
         boolean shouldAttachToParentImmediately = false;
 
         View view = inflater.inflate(layoutIdForListItem, viewGroup, shouldAttachToParentImmediately);
-        return new MyHolder(view);
+        final MyHolder holder = new MyHolder(view);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onItemClick(v, holder.getLayoutPosition());
+            }
+        });
+        return holder;
     }
 
     @Override
@@ -65,5 +74,8 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.MyHolder
             textRecipeName = (TextView) itemView.findViewById(R.id.tv_recipe_name);
             ivRecipeImage = (ImageView) itemView.findViewById(R.id.iv_recipe_image);
         }
+
     }
+
+
 }

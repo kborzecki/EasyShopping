@@ -84,7 +84,7 @@ public class RecipesList extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
 
-            List<BasicRecipeData> data = new ArrayList<>();
+            final List<BasicRecipeData> data = new ArrayList<>();
 
             try {
                 JSONArray jArray = new JSONArray(result);
@@ -106,11 +106,18 @@ public class RecipesList extends AppCompatActivity {
 
                     mRecyclerView.setLayoutManager(layoutManager);
 
-                    mRecipesAdapter = new RecipesAdapter(RecipesList.this, data);
+                    mRecipesAdapter = new RecipesAdapter(RecipesList.this, data, new CustomItemClickListener() {
+                        @Override
+                        public void onItemClick(View v, int position) {
+                            Toast.makeText(RecipesList.this, data.get(position).recipeID, Toast.LENGTH_LONG).show();
+                        }
+                    });
                 mRecyclerView.setAdapter(mRecipesAdapter);
                 } catch (JSONException e) {
                 Toast.makeText(RecipesList.this, e.toString(), Toast.LENGTH_LONG).show();
             }
         }
+
     }
+
 }
