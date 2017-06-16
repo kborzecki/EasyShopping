@@ -160,8 +160,9 @@ public class DetailedRecipe extends AppCompatActivity {
                 StringBuilder stepsList = new StringBuilder();
                 for(int i = 0; i < recipeData.recipeSteps.size(); i++) {
                     stepsList
+                            .append(i+1 + ". ")
                             .append(recipeData.recipeSteps.get(i))
-                            .append(".");
+                            .append(".\n");
                     if(i < recipeData.recipeSteps.size() - 1)
                         stepsList.append("\n");
                 }
