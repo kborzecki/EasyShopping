@@ -10,8 +10,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+
         android:theme="@style/AppTheme">
-        <activity android:name=".ShoppingLists">
+        <activity android:name=".ShoppingLists" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,7 +21,8 @@
         </activity>
         <activity
             android:name=".RecipesList"
-            android:parentActivityName=".ShoppingLists">
+            android:parentActivityName=".ShoppingLists"
+            android:screenOrientation="portrait">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
@@ -29,14 +31,15 @@
         </activity>
         <activity
             android:name=".DetailedRecipe"
-            android:parentActivityName=".RecipesList">
+            android:parentActivityName=".RecipesList"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".RecipesList" />
         </activity>
-        <activity android:name=".ListDetails" />
-        <activity android:name=".CreateModifyList" />
-        <activity android:name=".IngredientsList"></activity>
+        <activity android:name=".ListDetails" android:screenOrientation="portrait"/>
+        <activity android:name=".CreateModifyList" android:screenOrientation="portrait"/>
+        <activity android:name=".IngredientsList" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
