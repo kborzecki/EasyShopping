@@ -2,10 +2,11 @@ package com.example.pk.easyshopping;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.Collections;
@@ -47,7 +48,7 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
     }
 
     @Override
-    public void onBindViewHolder(IngredientsAdapter.MyHolder holder, int position) {
+    public void onBindViewHolder(IngredientsAdapter.MyHolder holder, final int position) {
         RecipeIngredientData current = data.get(position);
         StringBuilder ingredientString = new StringBuilder();
         ingredientString
@@ -57,6 +58,18 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
                 .append(" ")
                 .append(current.ingredientQuantityDisplay);
         holder.tvIngredient.setText(ingredientString);
+
+       holder.cbIsSelected.setChecked(data.get(position).isSelected);
+
+        holder.cbIsSelected.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                CheckBox cb = (CheckBox) v;
+                //RecipeIngredientData ingredient = (RecipeIngredientData) cb.getTag();
+                data.get(position).isSelected = cb.isChecked();
+
+                //ingredient.isSelected = cb.isChecked();
+            }
+        });
     }
 
     @Override
@@ -67,13 +80,19 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
     class MyHolder extends RecyclerView.ViewHolder {
 
         TextView tvIngredient;
+        CheckBox cbIsSelected;
 
 
         public MyHolder(View itemView){
             super(itemView);
             tvIngredient = (TextView) itemView.findViewById(R.id.tv_ingredient);
+            cbIsSelected = (CheckBox) itemView.findViewById(R.id.cb_ingredient_selected);
         }
 
+    }
+    public List<RecipeIngredientData> getIngredientsList() {
+        Log.e("Produkt 1: ", data.get(0).isSelected ? "true" : "false");
+        return data;
     }
 
 }

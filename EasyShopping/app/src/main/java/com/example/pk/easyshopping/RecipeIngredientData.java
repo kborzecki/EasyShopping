@@ -13,6 +13,7 @@ public class RecipeIngredientData implements Parcelable{
     public String ingredientQuantityDisplay;
     public String ingredientName;
     public String ingredientType;
+    public boolean isSelected = true;
 
     public RecipeIngredientData(){}
 
@@ -22,6 +23,7 @@ public class RecipeIngredientData implements Parcelable{
         ingredientQuantityDisplay = in.readString();
         ingredientName = in.readString();
         ingredientType = in.readString();
+        isSelected = Boolean.parseBoolean(in.readString());
     }
 
     @Override
@@ -36,6 +38,11 @@ public class RecipeIngredientData implements Parcelable{
         dest.writeString(ingredientQuantityDisplay);
         dest.writeString(ingredientName);
         dest.writeString(ingredientType);
+        if(isSelected){
+            dest.writeString("true");
+        } else {
+            dest.writeString("false");
+        }
     }
 
     public static final Parcelable.Creator<RecipeIngredientData> CREATOR = new Parcelable.Creator<RecipeIngredientData>() {
