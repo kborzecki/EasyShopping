@@ -1,45 +1,56 @@
 package com.ciezczak.mateusz.easyshopping;
 
 
-public class ShoppingListItem {
-    private boolean isChecked = false;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-    public boolean isChecked() {
-        return isChecked;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getQuantity() {
-        return quantity;
-    }
-
-    public String getQuantityType() {
-        return quantityType;
-    }
-
-    private String name;
-    private String quantity;
-    private String quantityType;
-
-    public void ToggleIsBought()
-    {
-        isChecked = !isChecked;
-    }
+public class ShoppingListItem implements Parcelable{
+    public String name;
+    public boolean isChecked = false;
 
     public ShoppingListItem()
     {
         this.name = "TEST";
-        this.quantity = "2";
-        this.quantityType = "litry";
     }
 
-    public ShoppingListItem(String n, String q, String qT)
+    public ShoppingListItem(String n)
     {
         this.name = n;
-        this.quantity = q;
-        this.quantityType = qT;
+    }
+
+    private ShoppingListItem(Parcel in){
+        this.name = in.readString();
+        this.isChecked = Boolean.parseBoolean(in.readString());
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        if(isChecked){
+            dest.writeString("true");
+        } else {
+            dest.writeString("false");
+        }
+    }
+
+    public static final Parcelable.Creator<ShoppingListItem> CREATOR = new Parcelable.Creator<ShoppingListItem>() {
+        public ShoppingListItem createFromParcel(Parcel in) {
+            return new ShoppingListItem(in);
+        }
+
+        public ShoppingListItem[] newArray(int size) {
+            return new ShoppingListItem[size];
+        }
+    };
+
+
+    public void ToggleIsBought()
+    {
+        isChecked = !isChecked;
     }
 }

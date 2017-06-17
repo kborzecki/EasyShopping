@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ciezczak.mateusz.easyshopping.ShoppingListItem;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -47,9 +49,27 @@ public class IngredientsList extends AppCompatActivity {
                         }
                     }
                     if (counter > 0) {
-                        Toast.makeText(IngredientsList.this,
+                        /*Toast.makeText(IngredientsList.this,
                                 "Wybrane produkty: \n" + selectedIngredients, Toast.LENGTH_LONG)
-                                .show();
+                                .show();*/
+                        ArrayList<ShoppingListItem> intentExtraData = new ArrayList<>();
+                        for(int i = 0; i < data.size(); i++){
+                            if(data.get(i).isSelected){
+                                StringBuilder product = new StringBuilder();
+                                product
+                                        .append(data.get(i).ingredientName)
+                                        .append(" -- ")
+                                        .append(data.get(i).ingredientQuantity)
+                                        .append(" ")
+                                        .append(data.get(i).ingredientQuantityDisplay);
+                                intentExtraData.add(new ShoppingListItem(product.toString()));
+                            }
+                        }
+                        Context context = IngredientsList.this;
+                        Intent myIntent = new Intent(context, CreateModifyList.class);
+                        myIntent.putExtra("INGREDIENTS", intentExtraData);
+                        myIntent.putExtra("INGREDIENTS", intentExtraData);
+                        context.startActivity(myIntent);
                     } else {
                         Toast.makeText(IngredientsList.this, "Nie wybrano żadnych produktów",
                                 Toast.LENGTH_LONG).show();
