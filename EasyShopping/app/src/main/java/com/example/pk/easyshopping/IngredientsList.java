@@ -5,9 +5,12 @@ import android.content.Intent;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +19,9 @@ import java.util.ArrayList;
 public class IngredientsList extends AppCompatActivity {
 
     private TextView mTextView;
+    private RecyclerView mRecyclerView;
+    private IngredientsAdapter mIngredientsAdapter;
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -40,7 +46,6 @@ public class IngredientsList extends AppCompatActivity {
         setContentView(R.layout.activity_ingredients_list);
         Intent intentThatStartedThisActivity = getIntent();
 
-        mTextView = (TextView) findViewById(R.id.tv_ingredients_list);
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation_ingredients_list);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -48,16 +53,35 @@ public class IngredientsList extends AppCompatActivity {
         navigation.getMenu().getItem(1).setChecked(true);
 
         if (intentThatStartedThisActivity.hasExtra(Intent.EXTRA_TEXT)) {
-            ArrayList<RecipeIngredientData> ingredientsList;
-            ingredientsList = intentThatStartedThisActivity.getParcelableArrayListExtra(Intent.EXTRA_TEXT);
-            StringBuilder list = new StringBuilder();
+            final ArrayList<RecipeIngredientData> data;
+            data = intentThatStartedThisActivity.getParcelableArrayListExtra(Intent.EXTRA_TEXT);
+            /*StringBuilder list = new StringBuilder();
             for (int i = 0; i < ingredientsList.size(); i++){
                 list.append(ingredientsList.get(i).ingredientName);
                 if(i < ingredientsList.size() - 1)
                     list.append("\n");
 
-            }
-            mTextView.setText(list.toString());
+            }*/
+            //ToDo: fix weird layout behaviour (activity_ingredients_list.xml, ingredients_list_item.xml)
+            mRecyclerView = (RecyclerView) findViewById(R.id.rv_ingredients);
+
+            LinearLayoutManager layoutManager
+                    = new LinearLayoutManager(IngredientsList.this, LinearLayoutManager.VERTICAL, false);
+
+            mRecyclerView.setLayoutManager(layoutManager);
+
+            mIngredientsAdapter = new IngredientsAdapter(IngredientsList.this, data, new CustomItemClickListener() {
+                @Override
+                public void onItemClick(View v, int position) {
+                    Toast.makeText(IngredientsList.this, data.get(position).ingredientName, Toast.LENGTH_LONG).show();
+                    /*Intent intent = new Intent(IngredientsList.this, DetailedRecipe.class);
+                    intent.putExtra(Intent.EXTRA_TEXT, data.get(position).recipeID);
+                    startActivity(intent);*/
+                }
+            });
+            mRecyclerView.setAdapter(mIngredientsAdapter);
+
+           // mTextView.setText(list.toString());
         }
     }
 
