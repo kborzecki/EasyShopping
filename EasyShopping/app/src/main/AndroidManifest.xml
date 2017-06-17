@@ -27,13 +27,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ShoppingLists" />
         </activity>
-        <activity android:name=".DetailedRecipe"
+        <activity
+            android:name=".DetailedRecipe"
             android:parentActivityName=".RecipesList">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".RecipesList" />
-
         </activity>
+        <activity android:name=".ListDetails" />
+        <activity android:name=".CreateModifyList" />
+        <activity android:name=".IngredientsList"></activity>
     </application>
 
 </manifest>

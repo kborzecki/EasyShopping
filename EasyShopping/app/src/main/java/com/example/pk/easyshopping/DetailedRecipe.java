@@ -34,21 +34,25 @@ public class DetailedRecipe extends AppCompatActivity {
     private TextView mTVRecipeDifficulty;
     private TextView mTVIngredientsList;
     private TextView mTVRecipeSteps;
+    private DetailedRecipeData recipeData = new DetailedRecipeData();
 
-   /* private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+   private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.action_create_list_from_ingredients:
-                    Toast.makeText(DetailedRecipe.this, "Dodaj do listy", Toast.LENGTH_LONG).show();
+                    Context context = DetailedRecipe.this;
+                    Intent myIntent = new Intent(context, IngredientsList.class);
+                    myIntent.putExtra(Intent.EXTRA_TEXT, recipeData.recipeIngredients);
+                    context.startActivity(myIntent);
                     return true;
             }
             return false;
         }
 
-    };*/
+    };
 
 
     @Override
@@ -66,8 +70,9 @@ public class DetailedRecipe extends AppCompatActivity {
         mTVRecipeSteps = (TextView) findViewById(R.id.tv_detailed_recipe_steps);
 
 
-        /*BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);*/
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation_detailed_recipe);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.getMenu().setGroupCheckable(0, false, true);
 
         if (intentThatStartedThisActivity.hasExtra(Intent.EXTRA_TEXT)) {
             String recipeID = intentThatStartedThisActivity.getStringExtra(Intent.EXTRA_TEXT);
@@ -141,7 +146,7 @@ public class DetailedRecipe extends AppCompatActivity {
                 JSONObject json_data = new JSONObject(result);
 
 
-                DetailedRecipeData recipeData = new DetailedRecipeData();
+
                 recipeData.recipeName = json_data.getString("name");
                 recipeData.recipeCategory = json_data.getString("category");
                 recipeData.recipeSubCategory = json_data.getString("sub_category");
@@ -201,9 +206,9 @@ public class DetailedRecipe extends AppCompatActivity {
                     stepsList
                             .append(i+1 + ". ")
                             .append(recipeData.recipeSteps.get(i))
-                            .append(".\n");
+                            .append(".");
                     if(i < recipeData.recipeSteps.size() - 1)
-                        stepsList.append("\n");
+                        stepsList.append("\n\n");
                 }
                 mTVRecipeSteps.setText(stepsList.toString());
 
