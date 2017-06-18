@@ -38,7 +38,10 @@
                 android:value=".RecipesList" />
         </activity>
         <activity android:name=".ListDetails" android:screenOrientation="portrait"/>
-        <activity android:name=".CreateModifyList" android:screenOrientation="portrait"/>
+        <activity
+            android:name=".CreateModifyList"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".IngredientsList" android:screenOrientation="portrait"></activity>
     </application>
 

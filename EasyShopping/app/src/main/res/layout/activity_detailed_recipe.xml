@@ -59,7 +59,7 @@
                         tools:layout_constraintRight_creator="1" />
 
                     <android.support.constraint.ConstraintLayout
-                        android:id="@+id/view"
+                        android:id="@+id/divider"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/gradient"
