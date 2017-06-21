@@ -171,15 +171,7 @@ public class RecipesList extends AppCompatActivity {
 
                 mRecyclerView.setLayoutManager(layoutManager);
 
-                mRecipesAdapter = new RecipesAdapter(RecipesList.this, data, new CustomItemClickListener() {
-                    @Override
-                    public void onItemClick(View v, int position) {
-                        //Toast.makeText(RecipesList.this, data.get(position).recipeID, Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(RecipesList.this, DetailedRecipe.class);
-                        intent.putExtra(Intent.EXTRA_TEXT, data.get(position).recipeID);
-                        startActivity(intent);
-                    }
-                });
+                mRecipesAdapter = new RecipesAdapter(RecipesList.this, data);
                 mRecyclerView.setAdapter(mRecipesAdapter);
 
                 } catch (JSONException e) {

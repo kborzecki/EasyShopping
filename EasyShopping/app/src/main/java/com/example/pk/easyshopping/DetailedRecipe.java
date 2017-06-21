@@ -82,7 +82,7 @@ public class DetailedRecipe extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.recipes_menu, menu);
+        getMenuInflater().inflate(R.menu.simple_menu, menu);
         return true;
     }
 

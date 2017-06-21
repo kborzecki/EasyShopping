@@ -1,6 +1,8 @@
 package com.example.pk.easyshopping;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,11 +31,10 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
     CustomItemClickListener listener;
 
 
-    public RecipesAdapter(Context context, List<BasicRecipeData> data, CustomItemClickListener listener) {
+    public RecipesAdapter(Context context, List<BasicRecipeData> data) {
         this.context = context;
         this.data = data;
         this.filtered = data;
-        this.listener = listener;
     }
 
     @Override
@@ -60,7 +61,14 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, int position) {
         BasicRecipeData current = data.get(position);
         holder.textRecipeName.setText(current.recipeName);
-
+        listener = new CustomItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                Intent intent = new Intent(context, DetailedRecipe.class);
+                intent.putExtra(Intent.EXTRA_TEXT, data.get(position).recipeID);
+                context.startActivity(intent);
+            }
+        };
         Glide.with(context).load(current.recipeImageURL)
                 .placeholder(R.mipmap.ic_error_recipe)
                 .error(R.mipmap.ic_error_recipe)
