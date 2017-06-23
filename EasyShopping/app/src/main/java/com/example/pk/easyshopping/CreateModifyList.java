@@ -1,5 +1,6 @@
 package com.example.pk.easyshopping;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.ciezczak.mateusz.easyshopping.ShoppingList;
@@ -20,9 +22,12 @@ import java.util.ArrayList;
 public class CreateModifyList extends AppCompatActivity {
 
     private EditText mListName;
+    private EditText mItemName;
     private RecyclerView mRecyclerView;
     private ProductsAdapter mProductsAdapter;
+    private ImageButton mButtonAddItem;
     ShoppingList shoppingList;
+    ArrayList<ShoppingListItem> productsListToSave;
     ArrayList<ShoppingListItem> productsList = null;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -32,7 +37,26 @@ public class CreateModifyList extends AppCompatActivity {
         public boolean onNavigationItemSelected(MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.action_save:
-                    Toast.makeText(CreateModifyList.this, "Zapisz zmiany", Toast.LENGTH_LONG).show();
+                    productsListToSave = mProductsAdapter.getShoppingListItems();
+                    if(productsListToSave.size() > 0) {
+                        if(mListName.getText().toString().equals("")){
+                            Toast.makeText(CreateModifyList.this, "Podaj nazwę listy!", Toast.LENGTH_SHORT).show();
+                        }else {
+                            shoppingList = new ShoppingList(mListName.getText().toString(), productsListToSave);
+
+                            //TODO: add saving lists to phone storage
+
+                            Context context = CreateModifyList.this;
+                            Intent myIntent = new Intent(context, ShoppingLists.class);
+                            context.startActivity(myIntent);
+
+                            //TODO: fix bug when using return button
+
+                            finish();
+                        }
+                    } else {
+                        Toast.makeText(CreateModifyList.this, "Nie można utworzyć listy bez zawartości.", Toast.LENGTH_SHORT).show();
+                    }
                     return true;
                 case R.id.action_cancel:
                     Toast.makeText(CreateModifyList.this, "Anuluj", Toast.LENGTH_LONG).show();
@@ -61,27 +85,41 @@ public class CreateModifyList extends AppCompatActivity {
                 mListName.setText(intentThatStartedThisActivity.getStringExtra("RECIPE_NAME"));
             }
             productsList = intentThatStartedThisActivity.getParcelableArrayListExtra("INGREDIENTS");
-
-            Log.i("Produkt 1:", productsList.get(0).name);
-
-            mRecyclerView = (RecyclerView) findViewById(R.id.rv_create_modify_list);
-            LinearLayoutManager layoutManager
-                    = new LinearLayoutManager(CreateModifyList.this, LinearLayoutManager.VERTICAL, false);
-
-            mRecyclerView.setLayoutManager(layoutManager);
-
-            mProductsAdapter = new ProductsAdapter(CreateModifyList.this, productsList, new CustomItemClickListener() {
-                @Override
-                public void onItemClick(View v, int position) {
-                }
-            });
-            mRecyclerView.setAdapter(mProductsAdapter);
-
-
         } else if (intentThatStartedThisActivity.hasExtra("SHOPPING_LIST")) {
             shoppingList = intentThatStartedThisActivity.getParcelableExtra("SHOPPING_LIST");
-
-
+            productsList = shoppingList;
+        } else {
+            productsList = new ArrayList<>();
         }
+
+        mItemName = (EditText) findViewById(R.id.et_add_item);
+        mButtonAddItem = (ImageButton) findViewById(R.id.ib_add_item);
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.rv_create_modify_list);
+        LinearLayoutManager layoutManager
+                = new LinearLayoutManager(CreateModifyList.this, LinearLayoutManager.VERTICAL, false);
+
+        mRecyclerView.setLayoutManager(layoutManager);
+
+        mProductsAdapter = new ProductsAdapter(CreateModifyList.this, productsList, new CustomItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+            }
+        });
+        mRecyclerView.setAdapter(mProductsAdapter);
+
+        //TODO: fix bug with screen "scrolling" when pressing enter key on keyboard
+        //TODO: add onKeyListener for mItemName - enter -> same action as mButtonAddItem on click
+
+        mButtonAddItem.setOnClickListener(new ImageButton.OnClickListener(){
+            public void onClick(View v){
+                if(!mItemName.getText().toString().equals("")) {
+                    mProductsAdapter.prepend(mItemName.getText().toString());
+                    mItemName.setText("");
+                    mRecyclerView.scrollToPosition(0);
+                }
+            }
+        });
+
     }
 }
