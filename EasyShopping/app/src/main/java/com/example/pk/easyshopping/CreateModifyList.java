@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -31,7 +32,7 @@ public class CreateModifyList extends AppCompatActivity {
     ArrayList<ShoppingListItem> productsList = null;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+            =   new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(MenuItem item) {
@@ -108,18 +109,38 @@ public class CreateModifyList extends AppCompatActivity {
         });
         mRecyclerView.setAdapter(mProductsAdapter);
 
-        //TODO: fix bug with screen "scrolling" when pressing enter key on keyboard
-        //TODO: add onKeyListener for mItemName - enter -> same action as mButtonAddItem on click
-
         mButtonAddItem.setOnClickListener(new ImageButton.OnClickListener(){
             public void onClick(View v){
-                if(!mItemName.getText().toString().equals("")) {
-                    mProductsAdapter.prepend(mItemName.getText().toString());
-                    mItemName.setText("");
-                    mRecyclerView.scrollToPosition(0);
-                }
+                addItemToIngredients();
             }
         });
 
+
+
+        mItemName.setOnKeyListener(new ImageButton.OnKeyListener(){
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(keyCode == 66 && !mItemName.getText().toString().equals("")) {
+                    mProductsAdapter.prepend(mItemName.getText().toString());
+                    mItemName.setText("");
+                    mRecyclerView.smoothScrollToPosition(0);
+                    return false;
+                }
+                if(keyCode == 4) {
+                    onBackPressed();
+                }
+                return true;
+
+            }
+        });
+
+    }
+
+    private void addItemToIngredients() {
+        if(!mItemName.getText().toString().equals("")) {
+            mProductsAdapter.prepend(mItemName.getText().toString());
+            mItemName.setText("");
+            mRecyclerView.scrollToPosition(0);
+        }
     }
 }
