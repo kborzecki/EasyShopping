@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.ciezczak.mateusz.easyshopping.ShoppingList;
@@ -20,8 +21,10 @@ import java.util.ArrayList;
 public class CreateModifyList extends AppCompatActivity {
 
     private EditText mListName;
+    private EditText mItemName;
     private RecyclerView mRecyclerView;
     private ProductsAdapter mProductsAdapter;
+    private ImageButton mButtonAddItem;
     ShoppingList shoppingList;
     ArrayList<ShoppingListItem> productsList = null;
 
@@ -64,18 +67,7 @@ public class CreateModifyList extends AppCompatActivity {
 
             Log.i("Produkt 1:", productsList.get(0).name);
 
-            mRecyclerView = (RecyclerView) findViewById(R.id.rv_create_modify_list);
-            LinearLayoutManager layoutManager
-                    = new LinearLayoutManager(CreateModifyList.this, LinearLayoutManager.VERTICAL, false);
 
-            mRecyclerView.setLayoutManager(layoutManager);
-
-            mProductsAdapter = new ProductsAdapter(CreateModifyList.this, productsList, new CustomItemClickListener() {
-                @Override
-                public void onItemClick(View v, int position) {
-                }
-            });
-            mRecyclerView.setAdapter(mProductsAdapter);
 
 
         } else if (intentThatStartedThisActivity.hasExtra("SHOPPING_LIST")) {
@@ -83,5 +75,35 @@ public class CreateModifyList extends AppCompatActivity {
 
 
         }
+
+        mItemName = (EditText) findViewById(R.id.et_add_item);
+        mButtonAddItem = (ImageButton) findViewById(R.id.ib_add_item);
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.rv_create_modify_list);
+        LinearLayoutManager layoutManager
+                = new LinearLayoutManager(CreateModifyList.this, LinearLayoutManager.VERTICAL, false);
+
+        mRecyclerView.setLayoutManager(layoutManager);
+
+        mProductsAdapter = new ProductsAdapter(CreateModifyList.this, productsList, new CustomItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+            }
+        });
+        mRecyclerView.setAdapter(mProductsAdapter);
+
+        //TODO: fix bug with screen "scrolling" when pressing enter key on keyboard
+        //TODO: add onKeyListener for mItemName - enter -> same action as mButtonAddItem on click
+
+        mButtonAddItem.setOnClickListener(new ImageButton.OnClickListener(){
+            public void onClick(View v){
+                if(!mItemName.getText().toString().equals("")) {
+                    mProductsAdapter.prepend(mItemName.getText().toString());
+                    mItemName.setText("");
+                    mRecyclerView.scrollToPosition(0);
+                }
+            }
+        });
+
     }
 }

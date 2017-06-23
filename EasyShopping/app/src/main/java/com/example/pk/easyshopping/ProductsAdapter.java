@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.ciezczak.mateusz.easyshopping.ShoppingList;
@@ -42,12 +43,12 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyHold
 
         View view = inflater.inflate(layoutIdForListItem, viewGroup, shouldAttachToParentImmediately);
         final ProductsAdapter.MyHolder holder = new ProductsAdapter.MyHolder(view);
-        view.setOnClickListener(new View.OnClickListener() {
+        /*view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 listener.onItemClick(v, holder.getLayoutPosition());
             }
-        });
+        });*/
         return holder;
     }
 
@@ -64,16 +65,43 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyHold
         return data.size();
     }
 
-    class MyHolder extends RecyclerView.ViewHolder {
+    class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView tvShoppingListItem;
+        ImageButton ibRemoveItem;
 
         public MyHolder(View itemView){
             super(itemView);
             tvShoppingListItem = (TextView) itemView.findViewById(R.id.tv_shopping_list_item_name);
+            ibRemoveItem = (ImageButton) itemView.findViewById(R.id.ib_remove_item);
+
+            ibRemoveItem.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v){
+            if(v.equals(ibRemoveItem)){
+                removeAt(getAdapterPosition());
+            }else if (listener != null) {
+                listener.onItemClick(v, getAdapterPosition());
+            }
         }
 
     }
+
+    public void removeAt(int position) {
+        data.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, data.size());
+    }
+    public void prepend(String name) {
+        ShoppingListItem tmp = new ShoppingListItem(name);
+        data.add(0, tmp);
+        notifyItemInserted(0);
+        notifyItemRangeChanged(0, data.size());
+        notifyDataSetChanged();
+    }
+
     public List<ShoppingListItem> getShoppingListItems() {
         return data;
     }
