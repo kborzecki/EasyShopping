@@ -4,18 +4,24 @@ import android.content.Intent;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ciezczak.mateusz.easyshopping.ShoppingList;
 import com.ciezczak.mateusz.easyshopping.ShoppingListItem;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class CreateModifyList extends AppCompatActivity {
-    //private TextView mTextView;
+
+    private EditText mListName;
+    private RecyclerView mRecyclerView;
+    private ProductsAdapter mProductsAdapter;
     ShoppingList shoppingList;
     ArrayList<ShoppingListItem> productsList = null;
 
@@ -47,20 +53,29 @@ public class CreateModifyList extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.getMenu().setGroupCheckable(0, false, true);
 
-       // mTextView = (TextView) findViewById(R.id.textView2);
+        mListName = (EditText) findViewById(R.id.et_list_name);
         Intent intentThatStartedThisActivity = getIntent();
 
         if (intentThatStartedThisActivity.hasExtra("INGREDIENTS")) {
+            if(intentThatStartedThisActivity.hasExtra("RECIPE_NAME")){
+                mListName.setText(intentThatStartedThisActivity.getStringExtra("RECIPE_NAME"));
+            }
             productsList = intentThatStartedThisActivity.getParcelableArrayListExtra("INGREDIENTS");
 
-            StringBuilder string = new StringBuilder();
-            for (int i = 0; i < productsList.size(); i++){
-                string
-                        .append(productsList.get(i).name)
-                        .append("\n");
-            }
+            Log.i("Produkt 1:", productsList.get(0).name);
 
-            //mTextView.setText(string);
+            mRecyclerView = (RecyclerView) findViewById(R.id.rv_create_modify_list);
+            LinearLayoutManager layoutManager
+                    = new LinearLayoutManager(CreateModifyList.this, LinearLayoutManager.VERTICAL, false);
+
+            mRecyclerView.setLayoutManager(layoutManager);
+
+            mProductsAdapter = new ProductsAdapter(CreateModifyList.this, productsList, new CustomItemClickListener() {
+                @Override
+                public void onItemClick(View v, int position) {
+                }
+            });
+            mRecyclerView.setAdapter(mProductsAdapter);
 
 
         } else if (intentThatStartedThisActivity.hasExtra("SHOPPING_LIST")) {

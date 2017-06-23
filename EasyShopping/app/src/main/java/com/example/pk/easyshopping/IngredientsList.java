@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,12 +16,12 @@ import android.widget.Toast;
 import com.ciezczak.mateusz.easyshopping.ShoppingListItem;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 public class IngredientsList extends AppCompatActivity {
 
+    private String recipeName = null;
     private TextView mTextView;
     private RecyclerView mRecyclerView;
     private IngredientsAdapter mIngredientsAdapter;
@@ -49,9 +48,6 @@ public class IngredientsList extends AppCompatActivity {
                         }
                     }
                     if (counter > 0) {
-                        /*Toast.makeText(IngredientsList.this,
-                                "Wybrane produkty: \n" + selectedIngredients, Toast.LENGTH_LONG)
-                                .show();*/
                         ArrayList<ShoppingListItem> intentExtraData = new ArrayList<>();
                         for(int i = 0; i < data.size(); i++){
                             if(data.get(i).isSelected){
@@ -68,7 +64,9 @@ public class IngredientsList extends AppCompatActivity {
                         Context context = IngredientsList.this;
                         Intent myIntent = new Intent(context, CreateModifyList.class);
                         myIntent.putExtra("INGREDIENTS", intentExtraData);
-                        myIntent.putExtra("INGREDIENTS", intentExtraData);
+                        if(!recipeName.isEmpty()) {
+                            myIntent.putExtra("RECIPE_NAME", recipeName);
+                        }
                         context.startActivity(myIntent);
                     } else {
                         Toast.makeText(IngredientsList.this, "Nie wybrano żadnych produktów",
@@ -92,8 +90,12 @@ public class IngredientsList extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.getMenu().setGroupCheckable(0, false, false);
 
-        if (intentThatStartedThisActivity.hasExtra(Intent.EXTRA_TEXT)) {
-            data = intentThatStartedThisActivity.getParcelableArrayListExtra(Intent.EXTRA_TEXT);
+        if (intentThatStartedThisActivity.hasExtra("RECIPE_NAME")) {
+            recipeName = intentThatStartedThisActivity.getStringExtra("RECIPE_NAME");
+        }
+
+        if (intentThatStartedThisActivity.hasExtra("INGREDIENTS_LIST")) {
+            data = intentThatStartedThisActivity.getParcelableArrayListExtra("INGREDIENTS_LIST");
 
             mRecyclerView = (RecyclerView) findViewById(R.id.rv_ingredients);
 

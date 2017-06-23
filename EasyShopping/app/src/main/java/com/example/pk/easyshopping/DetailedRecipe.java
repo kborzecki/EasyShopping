@@ -6,7 +6,6 @@ import android.os.AsyncTask;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -45,7 +44,8 @@ public class DetailedRecipe extends AppCompatActivity {
                 case R.id.action_create_list_from_ingredients:
                     Context context = DetailedRecipe.this;
                     Intent myIntent = new Intent(context, IngredientsList.class);
-                    myIntent.putExtra(Intent.EXTRA_TEXT, recipeData.recipeIngredients);
+                    myIntent.putExtra("INGREDIENTS_LIST", recipeData.recipeIngredients);
+                    myIntent.putExtra("RECIPE_NAME", recipeData.recipeName);
                     context.startActivity(myIntent);
                     return true;
             }
@@ -82,7 +82,7 @@ public class DetailedRecipe extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.simple_menu, menu);
+        getMenuInflater().inflate(R.menu.recipes_menu, menu);
         return true;
     }
 

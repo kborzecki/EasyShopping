@@ -12,17 +12,13 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -66,7 +62,7 @@ public class RecipesList extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.recipes_menu, menu);
+        getMenuInflater().inflate(R.menu.recipes_menu_search, menu);
 
         MenuItem search = menu.findItem(R.id.search);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(search);
