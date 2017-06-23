@@ -46,4 +46,6 @@ public class ShoppingList extends ArrayList<ShoppingListItem> {
 
     }
 
+    public ShoppingList(){}
+
 }

@@ -19,7 +19,9 @@ public class ShoppingLists extends AppCompatActivity {
         public boolean onNavigationItemSelected(MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.action_create_list:
-                    Toast.makeText(ShoppingLists.this, "Utwórz nową listę", Toast.LENGTH_LONG).show();
+                    Context context = ShoppingLists.this;
+                    Intent myIntent = new Intent(context, CreateModifyList.class);
+                    context.startActivity(myIntent);
                     return true;
             }
             return false;

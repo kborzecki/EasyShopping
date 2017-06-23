@@ -1,5 +1,6 @@
 package com.example.pk.easyshopping;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +27,7 @@ public class CreateModifyList extends AppCompatActivity {
     private ProductsAdapter mProductsAdapter;
     private ImageButton mButtonAddItem;
     ShoppingList shoppingList;
+    ArrayList<ShoppingListItem> productsListToSave;
     ArrayList<ShoppingListItem> productsList = null;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -35,7 +37,26 @@ public class CreateModifyList extends AppCompatActivity {
         public boolean onNavigationItemSelected(MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.action_save:
-                    Toast.makeText(CreateModifyList.this, "Zapisz zmiany", Toast.LENGTH_LONG).show();
+                    productsListToSave = mProductsAdapter.getShoppingListItems();
+                    if(productsListToSave.size() > 0) {
+                        if(mListName.getText().toString().equals("")){
+                            Toast.makeText(CreateModifyList.this, "Podaj nazwę listy!", Toast.LENGTH_SHORT).show();
+                        }else {
+                            shoppingList = new ShoppingList(mListName.getText().toString(), productsListToSave);
+
+                            //TODO: add saving lists to phone storage
+
+                            Context context = CreateModifyList.this;
+                            Intent myIntent = new Intent(context, ShoppingLists.class);
+                            context.startActivity(myIntent);
+
+                            //TODO: fix bug when using return button
+
+                            finish();
+                        }
+                    } else {
+                        Toast.makeText(CreateModifyList.this, "Nie można utworzyć listy bez zawartości.", Toast.LENGTH_SHORT).show();
+                    }
                     return true;
                 case R.id.action_cancel:
                     Toast.makeText(CreateModifyList.this, "Anuluj", Toast.LENGTH_LONG).show();
@@ -64,16 +85,11 @@ public class CreateModifyList extends AppCompatActivity {
                 mListName.setText(intentThatStartedThisActivity.getStringExtra("RECIPE_NAME"));
             }
             productsList = intentThatStartedThisActivity.getParcelableArrayListExtra("INGREDIENTS");
-
-            Log.i("Produkt 1:", productsList.get(0).name);
-
-
-
-
         } else if (intentThatStartedThisActivity.hasExtra("SHOPPING_LIST")) {
             shoppingList = intentThatStartedThisActivity.getParcelableExtra("SHOPPING_LIST");
-
-
+            productsList = shoppingList;
+        } else {
+            productsList = new ArrayList<>();
         }
 
         mItemName = (EditText) findViewById(R.id.et_add_item);

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.ciezczak.mateusz.easyshopping.ShoppingList;
 import com.ciezczak.mateusz.easyshopping.ShoppingListItem;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -24,11 +25,11 @@ import java.util.List;
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyHolder>{
 
     private Context context;
-    List<ShoppingListItem> data = Collections.emptyList();
+    ArrayList<ShoppingListItem> data = new ArrayList<>();
     CustomItemClickListener listener;
 
 
-    public ProductsAdapter(Context context, List<ShoppingListItem> data, CustomItemClickListener listener) {
+    public ProductsAdapter(Context context, ArrayList<ShoppingListItem> data, CustomItemClickListener listener) {
         this.context = context;
         this.data = data;
         this.listener = listener;
@@ -102,7 +103,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyHold
         notifyDataSetChanged();
     }
 
-    public List<ShoppingListItem> getShoppingListItems() {
+    public ArrayList<ShoppingListItem> getShoppingListItems() {
         return data;
     }
 

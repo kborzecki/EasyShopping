@@ -22,7 +22,6 @@ import java.util.List;
 public class IngredientsList extends AppCompatActivity {
 
     private String recipeName = null;
-    private TextView mTextView;
     private RecyclerView mRecyclerView;
     private IngredientsAdapter mIngredientsAdapter;
     private List<RecipeIngredientData> data = Collections.emptyList();
