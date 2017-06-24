@@ -12,7 +12,7 @@
         android:supportsRtl="true"
 
         android:theme="@style/AppTheme">
-        <activity android:name=".ShoppingLists" android:screenOrientation="portrait">
+        <activity android:name=".Activities.ShoppingLists" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,29 +20,29 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RecipesList"
-            android:parentActivityName=".ShoppingLists"
+            android:name=".Activities.RecipesList"
+            android:parentActivityName=".Activities.ShoppingLists"
             android:screenOrientation="portrait">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ShoppingLists" />
+                android:value=".Activities.ShoppingLists" />
         </activity>
         <activity
-            android:name=".DetailedRecipe"
-            android:parentActivityName=".RecipesList"
+            android:name=".Activities.DetailedRecipe"
+            android:parentActivityName=".Activities.RecipesList"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".RecipesList" />
+                android:value=".Activities.RecipesList" />
         </activity>
-        <activity android:name=".ListDetails" android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.ListDetails" android:screenOrientation="portrait"/>
         <activity
-            android:name=".CreateModifyList"
+            android:name=".Activities.CreateModifyList"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".IngredientsList" android:screenOrientation="portrait"></activity>
+        <activity android:name=".Activities.IngredientsList" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
