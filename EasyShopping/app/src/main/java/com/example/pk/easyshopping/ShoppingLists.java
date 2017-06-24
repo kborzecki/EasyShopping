@@ -6,25 +6,26 @@ import android.content.SharedPreferences;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ciezczak.mateusz.easyshopping.ShoppingList;
-import com.ciezczak.mateusz.easyshopping.ShoppingListItem;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 
 public class ShoppingLists extends AppCompatActivity {
     SharedPreferences mPrefs;
     SharedPreferences.Editor prefsEditor;
-    private ArrayList<ShoppingList> shoppingLists = new ArrayList<>();
+    private ArrayList<ShoppingList> shoppingListsData = new ArrayList<>();
     private TextView mShoppingLists;
+    private RecyclerView mRecyclerView;
+    private ShoppingListsAdapter mShoppingListsAdapter;
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -56,34 +57,33 @@ public class ShoppingLists extends AppCompatActivity {
         mPrefs = getSharedPreferences(getString(R.string.shared_preferences), MODE_PRIVATE);
         prefsEditor = mPrefs.edit();
 
-        mShoppingLists = (TextView) findViewById(R.id.tv_shopping_lists);
 
         getListsFromSharedPreferences();
 
-        //TODO: add recyclerview
-        //TODO: add onClick function
 
-        if(shoppingLists.size() > 0){
-            StringBuilder string = new StringBuilder();
-            for (int i = 0; i < shoppingLists.size(); i++){
-                string
-                        .append(shoppingLists.get(i).getListName())
-                        .append(": ");
-                ArrayList<ShoppingListItem> array = shoppingLists.get(i).getShoppingListItemsList();
-                for(int j = 0; j < array.size(); j++) {
-                    string.append(array.get(j).name);
-                }
-                string.append("\n");
-            }
-            mShoppingLists.setText(string.toString());
-        } else {
-            mShoppingLists.setText("Brak list do wyświetlenia.");
-        }
-
+        initViews();
+        mShoppingListsAdapter = new ShoppingListsAdapter(ShoppingLists.this, shoppingListsData);
+        mRecyclerView.setAdapter(mShoppingListsAdapter);
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getListsFromSharedPreferences();
+        mShoppingListsAdapter = new ShoppingListsAdapter(ShoppingLists.this, shoppingListsData);
+        mRecyclerView.setAdapter(mShoppingListsAdapter);
+    }
+
+    private void initViews(){
+        mRecyclerView = (RecyclerView) findViewById(R.id.rv_shopping_lists);
+        LinearLayoutManager layoutManager
+                = new LinearLayoutManager(ShoppingLists.this, LinearLayoutManager.VERTICAL, false);
+        mRecyclerView.setLayoutManager(layoutManager);
+    }
+
     public void getListsFromSharedPreferences(){
+        shoppingListsData = new ArrayList<>();
         Map<String, ?> shoppingListsMap = mPrefs.getAll();
         if(shoppingListsMap.size() > 0){
             Gson gson = new Gson();
@@ -91,7 +91,7 @@ public class ShoppingLists extends AppCompatActivity {
             Iterator iterator = shoppingListsMap.values().iterator();
             while(iterator.hasNext()) {
                 String temp = iterator.next().toString();
-                shoppingLists.add(gson.fromJson(temp, ShoppingList.class));
+                shoppingListsData.add(gson.fromJson(temp, ShoppingList.class));
                 //Toast.makeText(ShoppingLists.this, temp, Toast.LENGTH_LONG).show();
 
             }
