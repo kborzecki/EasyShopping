@@ -8,4 +8,5 @@
     <string name="add_to_existing_list_from_ingredients">Dodaj do istniejącej listy</string>
     <string name="cancel">Anuluj</string>
     <string name="save">Zapisz</string>
+    <string name="shared_preferences">easy_shopping_test_2</string>
 </resources>

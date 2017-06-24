@@ -2,6 +2,7 @@ package com.example.pk.easyshopping;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,10 +18,13 @@ import android.widget.Toast;
 
 import com.ciezczak.mateusz.easyshopping.ShoppingList;
 import com.ciezczak.mateusz.easyshopping.ShoppingListItem;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
 public class CreateModifyList extends AppCompatActivity {
+    SharedPreferences mPrefs;
+    SharedPreferences.Editor prefsEditor;
 
     private EditText mListName;
     private EditText mItemName;
@@ -42,10 +46,17 @@ public class CreateModifyList extends AppCompatActivity {
                     if(productsListToSave.size() > 0) {
                         if(mListName.getText().toString().equals("")){
                             Toast.makeText(CreateModifyList.this, "Podaj nazwę listy!", Toast.LENGTH_SHORT).show();
-                        }else {
+                        }else if (mPrefs.contains(mListName.getText().toString())) {
+                            Toast.makeText(CreateModifyList.this, "Lista o takiej nazwie już istnieje.", Toast.LENGTH_SHORT).show();
+                        } else {
                             shoppingList = new ShoppingList(mListName.getText().toString(), productsListToSave);
 
                             //TODO: add saving lists to phone storage
+                            Gson gson = new Gson();
+                            String json = gson.toJson(shoppingList);
+                            prefsEditor.putString(shoppingList.getListName(), json);
+                            prefsEditor.commit();
+
 
                             Context context = CreateModifyList.this;
                             Intent myIntent = new Intent(context, ShoppingLists.class);
@@ -72,6 +83,10 @@ public class CreateModifyList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mPrefs = getSharedPreferences(getString(R.string.shared_preferences), MODE_PRIVATE);
+        prefsEditor = mPrefs.edit();
+
         setContentView(R.layout.activity_create_modify_list);
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation_create_modify_list);
@@ -88,7 +103,7 @@ public class CreateModifyList extends AppCompatActivity {
             productsList = intentThatStartedThisActivity.getParcelableArrayListExtra("INGREDIENTS");
         } else if (intentThatStartedThisActivity.hasExtra("SHOPPING_LIST")) {
             shoppingList = intentThatStartedThisActivity.getParcelableExtra("SHOPPING_LIST");
-            productsList = shoppingList;
+            productsList = shoppingList.getShoppingListItemsList();
         } else {
             productsList = new ArrayList<>();
         }
