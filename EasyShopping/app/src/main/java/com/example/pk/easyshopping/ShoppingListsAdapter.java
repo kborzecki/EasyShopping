@@ -67,6 +67,7 @@ public class ShoppingListsAdapter extends RecyclerView.Adapter<ShoppingListsAdap
                 Intent intent = new Intent(context, ListDetails.class);
                 intent.putExtra("SHOPPING_LIST_NAME", data.get(position).getListName());
                 context.startActivity(intent);
+                ((ShoppingLists)context).finish();
             }
         };
 

@@ -15,7 +15,7 @@ public class ShoppingList{
         this.shoppingListItems = new ArrayList<>();
         this.shoppingListItems.addAll(shoppingListItems);
         this.ListName = listName;
-        this.NumberOfBoughtElements = 0;
+        updateNumberOfBoughtElements();
         this.NumberOfAllElements = shoppingListItems.size();
     }
 
@@ -33,6 +33,8 @@ public class ShoppingList{
         else
             return this.shoppingListItems.get(index);
     }
+
+    public int size(){ return this.shoppingListItems.size(); }
 
     public boolean add(ShoppingListItem o) {
         this.shoppingListItems.add(o);
@@ -54,7 +56,7 @@ public class ShoppingList{
         }
     }
 
-    private void updateNumberOfBoughtElements() {
+    public void updateNumberOfBoughtElements() {
         this.NumberOfBoughtElements = 0;
         for(int i = 0; i < NumberOfAllElements; i++){
             if(this.shoppingListItems.get(i).isChecked )this.NumberOfBoughtElements++;

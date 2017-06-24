@@ -30,6 +30,8 @@ public class CreateModifyList extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private ProductsAdapter mProductsAdapter;
     private ImageButton mButtonAddItem;
+    private boolean modify = false;
+    private String modifyShoppingListName = null;
     ShoppingList shoppingList;
     ArrayList<ShoppingListItem> productsListToSave;
     ArrayList<ShoppingListItem> productsList = null;
@@ -43,12 +45,17 @@ public class CreateModifyList extends AppCompatActivity {
                 case R.id.action_save:
                     productsListToSave = mProductsAdapter.getShoppingListItems();
                     if(productsListToSave.size() > 0) {
+                        if(modify && !mListName.getText().toString().equals("")){
+                            prefsEditor.remove(modifyShoppingListName);
+                            prefsEditor.commit();
+                        }
                         if(mListName.getText().toString().equals("")){
                             Toast.makeText(CreateModifyList.this, "Podaj nazwę listy!", Toast.LENGTH_SHORT).show();
-                        }else if (mPrefs.contains(mListName.getText().toString())) {
+                        } else if (mPrefs.contains(mListName.getText().toString())) {
                             Toast.makeText(CreateModifyList.this, "Lista o takiej nazwie już istnieje.", Toast.LENGTH_SHORT).show();
                         } else {
                             shoppingList = new ShoppingList(mListName.getText().toString(), productsListToSave);
+                            shoppingList.updateNumberOfBoughtElements();
 
                             //TODO: add saving lists to phone storage
                             Gson gson = new Gson();
@@ -70,7 +77,7 @@ public class CreateModifyList extends AppCompatActivity {
                     }
                     return true;
                 case R.id.action_cancel:
-                    Toast.makeText(CreateModifyList.this, "Anuluj", Toast.LENGTH_LONG).show();
+                    finish();
                     return true;
             }
             return false;
@@ -100,9 +107,21 @@ public class CreateModifyList extends AppCompatActivity {
                 mListName.setText(intentThatStartedThisActivity.getStringExtra("RECIPE_NAME"));
             }
             productsList = intentThatStartedThisActivity.getParcelableArrayListExtra("INGREDIENTS");
-        } else if (intentThatStartedThisActivity.hasExtra("SHOPPING_LIST")) {
-            shoppingList = intentThatStartedThisActivity.getParcelableExtra("SHOPPING_LIST");
-            productsList = shoppingList.getShoppingListItemsList();
+        } else if (intentThatStartedThisActivity.hasExtra("SHOPPING_LIST_NAME")) {
+            if(mPrefs.contains(intentThatStartedThisActivity.getStringExtra("SHOPPING_LIST_NAME"))){
+                Gson gson = new Gson();
+                shoppingList = gson.fromJson(
+                        mPrefs.getString(intentThatStartedThisActivity.getStringExtra("SHOPPING_LIST_NAME"), ""),
+                        ShoppingList.class);
+                productsList = shoppingList.getShoppingListItemsList();
+                modifyShoppingListName = shoppingList.getListName();
+                mListName.setText(modifyShoppingListName);
+                modify = true;
+            } else{
+                productsList = new ArrayList<>();
+                mListName.setText("Wystąpił błąd");
+            }
+
         } else {
             productsList = new ArrayList<>();
         }

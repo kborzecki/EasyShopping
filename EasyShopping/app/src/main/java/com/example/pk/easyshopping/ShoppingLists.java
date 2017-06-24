@@ -57,34 +57,22 @@ public class ShoppingLists extends AppCompatActivity {
         mPrefs = getSharedPreferences(getString(R.string.shared_preferences), MODE_PRIVATE);
         prefsEditor = mPrefs.edit();
 
-        //mShoppingLists = (TextView) findViewById(R.id.tv_shopping_lists);
 
         getListsFromSharedPreferences();
 
-        //TODO: add recyclerview
-        //TODO: add onClick function
-
-       /* if(shoppingListsData.size() > 0){
-            StringBuilder string = new StringBuilder();
-            for (int i = 0; i < shoppingListsData.size(); i++){
-                string
-                        .append(shoppingListsData.get(i).getListName())
-                        .append(": ");
-                ArrayList<ShoppingListItem> array = shoppingListsData.get(i).getShoppingListItemsList();
-                for(int j = 0; j < array.size(); j++) {
-                    string.append(array.get(j).name);
-                }
-                string.append("\n");
-            }
-            mShoppingLists.setText(string.toString());
-        } else {
-            mShoppingLists.setText("Brak list do wyświetlenia.");
-        }*/
 
         initViews();
         mShoppingListsAdapter = new ShoppingListsAdapter(ShoppingLists.this, shoppingListsData);
         mRecyclerView.setAdapter(mShoppingListsAdapter);
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getListsFromSharedPreferences();
+        mShoppingListsAdapter = new ShoppingListsAdapter(ShoppingLists.this, shoppingListsData);
+        mRecyclerView.setAdapter(mShoppingListsAdapter);
     }
 
     private void initViews(){
@@ -95,6 +83,7 @@ public class ShoppingLists extends AppCompatActivity {
     }
 
     public void getListsFromSharedPreferences(){
+        shoppingListsData = new ArrayList<>();
         Map<String, ?> shoppingListsMap = mPrefs.getAll();
         if(shoppingListsMap.size() > 0){
             Gson gson = new Gson();
