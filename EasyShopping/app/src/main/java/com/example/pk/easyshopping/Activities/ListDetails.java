@@ -1,10 +1,12 @@
 package com.example.pk.easyshopping.Activities;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -43,13 +45,30 @@ public class ListDetails extends AppCompatActivity {
 
                     return true;
                 case R.id.action_delete:
-                    prefsEditor.remove(shoppingListName);
-                    prefsEditor.commit();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(ListDetails.this);
+                    builder.setTitle(R.string.app_name);
+                    builder.setMessage("Czy napewno usunąć listę zakupów?");
+                    builder.setIcon(R.mipmap.ic_launcher);
+                    builder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.dismiss();
+                            prefsEditor.remove(shoppingListName);
+                            prefsEditor.commit();
 
-                    Context context2 = ListDetails.this;
-                    Intent myIntent2 = new Intent(context2, ShoppingLists.class);
-                    context2.startActivity(myIntent2);
-                    finish();
+                            Context context2 = ListDetails.this;
+                            Intent myIntent2 = new Intent(context2, ShoppingLists.class);
+                            context2.startActivity(myIntent2);
+                            finish();
+
+                        }
+                    });
+                    builder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.dismiss();
+                        }
+                    });
+                    AlertDialog alert = builder.create();
+                    alert.show();
                     return true;
             }
             return false;

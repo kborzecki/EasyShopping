@@ -19,14 +19,14 @@ public class RestApiTest {
         DatabaseProperties prop = new DatabaseProperties();
         Database db = new Database();
         BasicDBObject dbo = (BasicDBObject) db.FindFirstRecipe();
-        int prevLikedValue = Integer.parseInt(dbo.getString("liked"));
+        double prevLikedValue = dbo.getDouble("liked");
 
-        String url = "http://" + prop.getValue("serverAddress") + ":4567/recipes/update/" + dbo.getString("_id");
+        String url = "http://" + prop.getValue("serverAddress") + ":4567/recipes_update?id=" + dbo.getString("_id");
         given().when().put(url).then().statusCode(200);
 
         dbo = (BasicDBObject) db.FindFirstRecipe();
 
-        assertEquals(prevLikedValue + 1, Integer.parseInt(dbo.getString("liked")));
+        assertEquals(prevLikedValue + 1., dbo.getDouble("liked"), 0);
 
     }
 }

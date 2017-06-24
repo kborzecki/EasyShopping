@@ -25,7 +25,7 @@ public class Database implements AutoCloseable{
 
         char[] passChar = passStr.toCharArray();
 
-        MongoCredential credential = MongoCredential.createCredential(user, "admin", passChar);
+        MongoCredential credential = MongoCredential.createCredential(user, "recipesDB", passChar);
         ServerAddress serverAddress = new ServerAddress(serverAddressStr, 27017);
 
         this.dbClient = new MongoClient(serverAddress, Arrays.asList(credential));
@@ -53,7 +53,7 @@ public class Database implements AutoCloseable{
         Bson filter = new Document("_id", new ObjectId(id));
         MongoCollection<org.bson.Document> coll = db2.getCollection("recipes");
         BasicDBObject dbo = (BasicDBObject) FindOneById(id);
-        int lastLikes = Integer.parseInt(dbo.getString("liked"));
+        double lastLikes = Double.parseDouble(dbo.getString("liked"));
         return coll.updateOne(filter, new Document("$set", new Document("liked", lastLikes + 1)));
     }
 

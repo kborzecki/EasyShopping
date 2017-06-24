@@ -8,9 +8,10 @@ public class ShoppingListItem implements Parcelable{
     public String name;
     public boolean isChecked = false;
 
-    public ShoppingListItem()
+    public ShoppingListItem(boolean checked)
     {
         this.name = "TEST";
+        this.isChecked = checked;
     }
 
     public ShoppingListItem(String n)
