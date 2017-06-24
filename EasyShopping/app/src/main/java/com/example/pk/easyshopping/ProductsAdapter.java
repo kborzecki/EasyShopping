@@ -7,16 +7,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.ciezczak.mateusz.easyshopping.ShoppingList;
 import com.ciezczak.mateusz.easyshopping.ShoppingListItem;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * Created by Lagger on 2017-06-17.
@@ -38,7 +34,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyHold
     @Override
     public ProductsAdapter.MyHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         Context context = viewGroup.getContext();
-        int layoutIdForListItem = R.layout.shopping_list_item;
+        int layoutIdForListItem = R.layout.shopping_list_item_item;
         LayoutInflater inflater = LayoutInflater.from(context);
         boolean shouldAttachToParentImmediately = false;
 

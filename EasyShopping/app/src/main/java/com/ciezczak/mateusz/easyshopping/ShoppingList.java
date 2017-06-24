@@ -27,6 +27,13 @@ public class ShoppingList{
 
     }
 
+    public ShoppingListItem get(int index){
+        if(index < 0 || index >= this.shoppingListItems.size())
+            throw new IndexOutOfBoundsException();
+        else
+            return this.shoppingListItems.get(index);
+    }
+
     public boolean add(ShoppingListItem o) {
         this.shoppingListItems.add(o);
         this.NumberOfAllElements = shoppingListItems.size();
