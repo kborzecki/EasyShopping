@@ -1,10 +1,6 @@
-package com.example.pk.easyshopping;
+package com.example.pk.easyshopping.Models;
 
 import java.util.ArrayList;
-
-/**
- * Created by Lagger on 2017-06-16.
- */
 
 public class DetailedRecipeData {
     public String recipeName;

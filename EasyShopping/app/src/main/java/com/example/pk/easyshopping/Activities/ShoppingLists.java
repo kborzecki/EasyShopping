@@ -1,22 +1,24 @@
-package com.example.pk.easyshopping;
+package com.example.pk.easyshopping.Activities;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.ciezczak.mateusz.easyshopping.ShoppingList;
+import com.example.pk.easyshopping.Adapters.ShoppingListsAdapter;
+import com.example.pk.easyshopping.Models.ShoppingList;
+import com.example.pk.easyshopping.R;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Collections;
 import java.util.Map;
 
 public class ShoppingLists extends AppCompatActivity {
@@ -56,7 +58,7 @@ public class ShoppingLists extends AppCompatActivity {
 
         mPrefs = getSharedPreferences(getString(R.string.shared_preferences), MODE_PRIVATE);
         prefsEditor = mPrefs.edit();
-
+        prefsEditor.apply();
 
         getListsFromSharedPreferences();
 
@@ -87,15 +89,14 @@ public class ShoppingLists extends AppCompatActivity {
         Map<String, ?> shoppingListsMap = mPrefs.getAll();
         if(shoppingListsMap.size() > 0){
             Gson gson = new Gson();
-            //ArrayList<String> listOfShoppingListsJSONS = new ArrayList<>();
-            Iterator iterator = shoppingListsMap.values().iterator();
-            while(iterator.hasNext()) {
-                String temp = iterator.next().toString();
+            for (Object o : shoppingListsMap.values()) {
+                String temp = o.toString();
                 shoppingListsData.add(gson.fromJson(temp, ShoppingList.class));
-                //Toast.makeText(ShoppingLists.this, temp, Toast.LENGTH_LONG).show();
 
             }
         }
+        Collections.sort(shoppingListsData);
+        Collections.reverse(shoppingListsData);
     }
 
     @Override

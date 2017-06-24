@@ -1,4 +1,4 @@
-package com.ciezczak.mateusz.easyshopping;
+package com.example.pk.easyshopping.Models;
 
 
 import android.os.Parcel;
@@ -47,10 +47,4 @@ public class ShoppingListItem implements Parcelable{
             return new ShoppingListItem[size];
         }
     };
-
-
-    public void ToggleIsBought()
-    {
-        isChecked = !isChecked;
-    }
 }

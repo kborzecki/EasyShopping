@@ -1,8 +1,4 @@
-package com.example.pk.easyshopping;
-
-/**
- * Created by Lagger on 2017-06-16.
- */
+package com.example.pk.easyshopping.Models;
 
 public class BasicRecipeData {
 

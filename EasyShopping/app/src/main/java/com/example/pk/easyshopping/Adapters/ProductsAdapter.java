@@ -1,16 +1,17 @@
 //TODO: fix recyclerview bugs and create_modify_list layout
-package com.example.pk.easyshopping;
+package com.example.pk.easyshopping.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.ciezczak.mateusz.easyshopping.ShoppingListItem;
+import com.example.pk.easyshopping.Models.CustomItemClickListener;
+import com.example.pk.easyshopping.Models.ShoppingListItem;
+import com.example.pk.easyshopping.R;
 
 import java.util.ArrayList;
 
@@ -21,8 +22,8 @@ import java.util.ArrayList;
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyHolder>{
 
     private Context context;
-    ArrayList<ShoppingListItem> data = new ArrayList<>();
-    CustomItemClickListener listener;
+    private ArrayList<ShoppingListItem> data = new ArrayList<>();
+    private CustomItemClickListener listener;
 
 
     public ProductsAdapter(Context context, ArrayList<ShoppingListItem> data, CustomItemClickListener listener) {
@@ -39,20 +40,14 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyHold
         boolean shouldAttachToParentImmediately = false;
 
         View view = inflater.inflate(layoutIdForListItem, viewGroup, shouldAttachToParentImmediately);
-        final ProductsAdapter.MyHolder holder = new ProductsAdapter.MyHolder(view);
-        /*view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onItemClick(v, holder.getLayoutPosition());
-            }
-        });*/
-        return holder;
+
+        return new MyHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ProductsAdapter.MyHolder holder, final int position) {
         ShoppingListItem current = data.get(position);
-        Log.i("Produkt", current.name);
+        //Log.i("Produkt", current.name);
         holder.tvShoppingListItem.setText(current.name);
 
     }
@@ -67,7 +62,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyHold
         TextView tvShoppingListItem;
         ImageButton ibRemoveItem;
 
-        public MyHolder(View itemView){
+        MyHolder(View itemView) {
             super(itemView);
             tvShoppingListItem = (TextView) itemView.findViewById(R.id.tv_shopping_list_item_name);
             ibRemoveItem = (ImageButton) itemView.findViewById(R.id.ib_remove_item);
@@ -86,7 +81,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyHold
 
     }
 
-    public void removeAt(int position) {
+    private void removeAt(int position) {
         data.remove(position);
         notifyItemRemoved(position);
         notifyItemRangeChanged(position, data.size());

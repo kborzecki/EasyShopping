@@ -1,11 +1,8 @@
-package com.example.pk.easyshopping;
+package com.example.pk.easyshopping.Models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Created by Lagger on 2017-06-16.
- */
 
 public class RecipeIngredientData implements Parcelable{
     public String ingredientQuantity;
@@ -38,11 +35,7 @@ public class RecipeIngredientData implements Parcelable{
         dest.writeString(ingredientQuantityDisplay);
         dest.writeString(ingredientName);
         dest.writeString(ingredientType);
-        if(isSelected){
-            dest.writeString("true");
-        } else {
-            dest.writeString("false");
-        }
+        dest.writeString(Boolean.toString(isSelected));
     }
 
     public static final Parcelable.Creator<RecipeIngredientData> CREATOR = new Parcelable.Creator<RecipeIngredientData>() {

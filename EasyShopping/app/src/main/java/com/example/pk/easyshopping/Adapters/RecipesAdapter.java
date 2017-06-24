@@ -1,8 +1,7 @@
-package com.example.pk.easyshopping;
+package com.example.pk.easyshopping.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +12,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.pk.easyshopping.Activities.DetailedRecipe;
+import com.example.pk.easyshopping.Models.BasicRecipeData;
+import com.example.pk.easyshopping.Models.CustomItemClickListener;
+import com.example.pk.easyshopping.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,10 +28,10 @@ import java.util.List;
 public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHolder> implements Filterable{
 
     private Context context;
-    List<BasicRecipeData> data = Collections.emptyList();
-    List<BasicRecipeData> filtered = Collections.emptyList();
+    private List<BasicRecipeData> data = Collections.emptyList();
+    private List<BasicRecipeData> filtered = Collections.emptyList();
 
-    CustomItemClickListener listener;
+    private CustomItemClickListener listener;
 
 
     public RecipesAdapter(Context context, List<BasicRecipeData> data) {
@@ -125,7 +128,7 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
         TextView textRecipeName;
         ImageView ivRecipeImage;
 
-        public ViewHolder(View itemView){
+        ViewHolder(View itemView) {
             super(itemView);
             textRecipeName = (TextView) itemView.findViewById(R.id.tv_recipe_name);
             ivRecipeImage = (ImageView) itemView.findViewById(R.id.iv_recipe_image);

@@ -1,19 +1,17 @@
-package com.example.pk.easyshopping;
+package com.example.pk.easyshopping.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.ciezczak.mateusz.easyshopping.ShoppingList;
-import com.ciezczak.mateusz.easyshopping.ShoppingListItem;
-
-import java.util.Collections;
-import java.util.List;
+import com.example.pk.easyshopping.Models.CustomItemClickListener;
+import com.example.pk.easyshopping.Models.ShoppingList;
+import com.example.pk.easyshopping.Models.ShoppingListItem;
+import com.example.pk.easyshopping.R;
 
 /**
  * Created by Lagger on 2017-06-24.
@@ -22,8 +20,8 @@ import java.util.List;
 public class DetailedShoppingListAdapter extends RecyclerView.Adapter<DetailedShoppingListAdapter.MyHolder>{
 
     private Context context;
-    ShoppingList data;
-    CustomItemClickListener listener;
+    private ShoppingList data;
+    private CustomItemClickListener listener;
 
 
     public DetailedShoppingListAdapter(Context context, ShoppingList data, CustomItemClickListener listener) {
@@ -80,7 +78,7 @@ public class DetailedShoppingListAdapter extends RecyclerView.Adapter<DetailedSh
         CheckBox cbIsBought;
 
 
-        public MyHolder(View itemView){
+        MyHolder(View itemView) {
             super(itemView);
             tvShoppingListItem = (TextView) itemView.findViewById(R.id.tv_detailed_shopping_list_item_name);
             cbIsBought = (CheckBox) itemView.findViewById(R.id.cb_detailed_shopping_list_item_bought);

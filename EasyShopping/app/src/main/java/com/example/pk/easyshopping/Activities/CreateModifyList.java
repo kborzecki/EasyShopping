@@ -1,14 +1,13 @@
-package com.example.pk.easyshopping;
+package com.example.pk.easyshopping.Activities;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,8 +15,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.ciezczak.mateusz.easyshopping.ShoppingList;
-import com.ciezczak.mateusz.easyshopping.ShoppingListItem;
+import com.example.pk.easyshopping.Adapters.ProductsAdapter;
+import com.example.pk.easyshopping.Models.CustomItemClickListener;
+import com.example.pk.easyshopping.Models.ShoppingList;
+import com.example.pk.easyshopping.Models.ShoppingListItem;
+import com.example.pk.easyshopping.R;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -58,18 +60,14 @@ public class CreateModifyList extends AppCompatActivity {
                             shoppingList = new ShoppingList(mListName.getText().toString(), productsListToSave);
                             shoppingList.updateNumberOfBoughtElements();
 
-                            //TODO: add saving lists to phone storage
                             Gson gson = new Gson();
                             String json = gson.toJson(shoppingList);
                             prefsEditor.putString(shoppingList.getListName(), json);
                             prefsEditor.commit();
 
-
                             Context context = CreateModifyList.this;
                             Intent myIntent = new Intent(context, ShoppingLists.class);
                             context.startActivity(myIntent);
-
-                            //TODO: fix bug when using return button
 
                             finish();
                         }
@@ -93,6 +91,7 @@ public class CreateModifyList extends AppCompatActivity {
 
         mPrefs = getSharedPreferences(getString(R.string.shared_preferences), MODE_PRIVATE);
         prefsEditor = mPrefs.edit();
+        prefsEditor.apply();
 
         setContentView(R.layout.activity_create_modify_list);
 

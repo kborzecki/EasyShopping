@@ -1,11 +1,11 @@
-package com.example.pk.easyshopping;
+package com.example.pk.easyshopping.Activities;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -13,6 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.pk.easyshopping.Models.DetailedRecipeData;
+import com.example.pk.easyshopping.Models.RecipeIngredientData;
+import com.example.pk.easyshopping.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -102,7 +105,7 @@ public class DetailedRecipe extends AppCompatActivity {
         new FetchRecipesTask().execute(id);
     }
 
-    public class FetchRecipesTask extends AsyncTask<String, Void, String> {
+    private class FetchRecipesTask extends AsyncTask<String, Void, String> {
         URL url = null;
 
         @Override

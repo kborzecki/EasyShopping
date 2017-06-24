@@ -1,18 +1,22 @@
-package com.example.pk.easyshopping;
+package com.example.pk.easyshopping.Activities;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import com.example.pk.easyshopping.Adapters.RecipesAdapter;
+import com.example.pk.easyshopping.Models.BasicRecipeData;
+import com.example.pk.easyshopping.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -106,7 +110,6 @@ public class RecipesList extends AppCompatActivity {
     }
 
     public class FetchRecipesTask extends AsyncTask<String, Void, String> {
-        HttpURLConnection conn;
         URL url = null;
 
         @Override
@@ -138,7 +141,7 @@ public class RecipesList extends AppCompatActivity {
 
             } catch (Exception e) {
                 e.printStackTrace();
-                return "wystąpił błąd";
+                return "Błąd z połączeniem";
             }
         }
 

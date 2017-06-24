@@ -1,4 +1,4 @@
-package com.example.pk.easyshopping;
+package com.example.pk.easyshopping.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
+
+import com.example.pk.easyshopping.Models.CustomItemClickListener;
+import com.example.pk.easyshopping.Models.RecipeIngredientData;
+import com.example.pk.easyshopping.R;
 
 import java.util.Collections;
 import java.util.List;
@@ -19,8 +23,8 @@ import java.util.List;
 public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.MyHolder>{
 
     private Context context;
-    List<RecipeIngredientData> data = Collections.emptyList();
-    CustomItemClickListener listener;
+    private List<RecipeIngredientData> data = Collections.emptyList();
+    private CustomItemClickListener listener;
 
 
     public IngredientsAdapter(Context context, List<RecipeIngredientData> data, CustomItemClickListener listener) {
@@ -83,7 +87,7 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
         CheckBox cbIsSelected;
 
 
-        public MyHolder(View itemView){
+        MyHolder(View itemView) {
             super(itemView);
             tvIngredient = (TextView) itemView.findViewById(R.id.tv_ingredient);
             cbIsSelected = (CheckBox) itemView.findViewById(R.id.cb_ingredient_selected);

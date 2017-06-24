@@ -1,14 +1,16 @@
-package com.ciezczak.mateusz.easyshopping;
+package com.example.pk.easyshopping.Models;
+
+import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
+import java.util.Date;
 
-public class ShoppingList{
+public class ShoppingList implements Comparable<ShoppingList> {
     private String ListName;
     private int NumberOfAllElements;
     private int NumberOfBoughtElements;
     private ArrayList<ShoppingListItem> shoppingListItems = new ArrayList<>();
-
-    //TODO: add timestamps for sorting
+    private Date dateTime;
 
     public ShoppingList(String listName, ArrayList<ShoppingListItem> shoppingListItems)
     {
@@ -17,6 +19,7 @@ public class ShoppingList{
         this.ListName = listName;
         updateNumberOfBoughtElements();
         this.NumberOfAllElements = shoppingListItems.size();
+        dateTime = new Date();
     }
 
     public ShoppingList(String listName)
@@ -24,7 +27,7 @@ public class ShoppingList{
         this.ListName = listName;
         this.NumberOfBoughtElements = 0;
         this.NumberOfAllElements = 0;
-
+        dateTime = new Date();
     }
 
     public ShoppingListItem get(int index){
@@ -33,6 +36,11 @@ public class ShoppingList{
         else
             return this.shoppingListItems.get(index);
     }
+
+    private Date getDateTime() {
+        return dateTime;
+    }
+
 
     public int size(){ return this.shoppingListItems.size(); }
 
@@ -75,13 +83,13 @@ public class ShoppingList{
         return NumberOfBoughtElements;
     }
 
-    public void IncreaseBoughtValue()
-    {
-        NumberOfBoughtElements++;
+
+    public ShoppingList() {
+        dateTime = new Date();
     }
 
-
-
-    public ShoppingList(){}
-
+    @Override
+    public int compareTo(@NonNull ShoppingList o) {
+        return getDateTime().compareTo(o.getDateTime());
+    }
 }

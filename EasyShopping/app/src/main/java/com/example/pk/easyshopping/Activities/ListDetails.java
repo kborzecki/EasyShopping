@@ -1,18 +1,21 @@
-package com.example.pk.easyshopping;
+package com.example.pk.easyshopping.Activities;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.ciezczak.mateusz.easyshopping.ShoppingList;
+import com.example.pk.easyshopping.Adapters.DetailedShoppingListAdapter;
+import com.example.pk.easyshopping.Models.CustomItemClickListener;
+import com.example.pk.easyshopping.Models.ShoppingList;
+import com.example.pk.easyshopping.R;
 import com.google.gson.Gson;
 
 public class ListDetails extends AppCompatActivity {
@@ -62,6 +65,7 @@ public class ListDetails extends AppCompatActivity {
 
         mPrefs = getSharedPreferences(getString(R.string.shared_preferences), MODE_PRIVATE);
         prefsEditor = mPrefs.edit();
+        prefsEditor.apply();
 
         Intent intentThatStartedThisActivity = getIntent();
 
@@ -118,7 +122,6 @@ public class ListDetails extends AppCompatActivity {
     public void onBackPressed()
     {
         saveListToSharedPreferences();
-
         Context context = ListDetails.this;
         Intent myIntent = new Intent(context, ShoppingLists.class);
         context.startActivity(myIntent);

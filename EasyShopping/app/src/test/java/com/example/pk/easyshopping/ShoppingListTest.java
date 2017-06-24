@@ -1,17 +1,13 @@
 package com.example.pk.easyshopping;
 
-import com.ciezczak.mateusz.easyshopping.ShoppingList;
-import com.ciezczak.mateusz.easyshopping.ShoppingListItem;
+import com.example.pk.easyshopping.Models.ShoppingList;
+import com.example.pk.easyshopping.Models.ShoppingListItem;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-public class ExampleUnitTest {
-    @Test
-    public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
-    }
+public class ShoppingListTest {
 
     @Test
     public void ShouldAddAndGetElementFromList() throws Exception {
@@ -22,4 +18,6 @@ public class ExampleUnitTest {
         assertEquals(shoppingListItemExcepted, shoppingList.get(0));
         assertEquals(1, shoppingList.getNumberOfAllElements());
     }
+
+
 }
