@@ -148,8 +148,6 @@ public class DetailedRecipe extends AppCompatActivity {
             try {
                 JSONObject json_data = new JSONObject(result);
 
-
-
                 recipeData.recipeName = json_data.getString("name");
                 recipeData.recipeCategory = json_data.getString("category");
                 recipeData.recipeSubCategory = json_data.getString("sub_category");
@@ -178,10 +176,6 @@ public class DetailedRecipe extends AppCompatActivity {
                     ingredient.ingredientType = json_ingredient.getString("type");
                     recipeData.recipeIngredients.add(ingredient);
                 }
-
-
-
-
 
                 mTVRecipeName.setText(recipeData.recipeName);
                 Glide.with(DetailedRecipe.this).load(recipeData.recipeImageURL)

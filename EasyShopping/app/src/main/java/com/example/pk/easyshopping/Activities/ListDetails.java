@@ -121,6 +121,13 @@ public class ListDetails extends AppCompatActivity {
         });
         mRecyclerView.setAdapter(mDetailedShoppingListAdapter);
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        saveListToSharedPreferences();
+    }
+
     private void initViews(){
         mDetailedShoppingListName = (TextView) findViewById(R.id.tv_detailed_shopping_list_name);
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_detailed_shopping_list);
@@ -128,6 +135,7 @@ public class ListDetails extends AppCompatActivity {
                 = new LinearLayoutManager(ListDetails.this, LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
     }
+
 
     public void getListFromSharedPreferences(){
         if(mPrefs.contains(shoppingListName)){

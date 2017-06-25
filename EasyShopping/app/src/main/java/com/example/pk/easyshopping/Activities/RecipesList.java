@@ -32,10 +32,7 @@ import java.util.Scanner;
 
 public class RecipesList extends AppCompatActivity {
     private SwipeRefreshLayout swipeContainer;
-
-
     private RecyclerView mRecyclerView;
-
     private RecipesAdapter mRecipesAdapter;
 
     @Override
@@ -57,8 +54,8 @@ public class RecipesList extends AppCompatActivity {
         loadRecipesData();
     }
 
-    private void initViews(){
-        mRecyclerView = (RecyclerView)findViewById(R.id.rv_recipes);
+    private void initViews() {
+        mRecyclerView = (RecyclerView) findViewById(R.id.rv_recipes);
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
@@ -96,8 +93,7 @@ public class RecipesList extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int menuItemThatWasSelected = item.getItemId();
-        if (menuItemThatWasSelected == R.id.action_shopping_lists)
-        {
+        if (menuItemThatWasSelected == R.id.action_shopping_lists) {
             Context context = RecipesList.this;
             Intent myIntent = new Intent(context, ShoppingLists.class);
             context.startActivity(myIntent);
@@ -109,7 +105,7 @@ public class RecipesList extends AppCompatActivity {
         new FetchRecipesTask().execute();
     }
 
-    public class FetchRecipesTask extends AsyncTask<String, Void, String> {
+    private class FetchRecipesTask extends AsyncTask<String, Void, String> {
         URL url = null;
 
         @Override
@@ -173,7 +169,7 @@ public class RecipesList extends AppCompatActivity {
                 mRecipesAdapter = new RecipesAdapter(RecipesList.this, data);
                 mRecyclerView.setAdapter(mRecipesAdapter);
 
-                } catch (JSONException e) {
+            } catch (JSONException e) {
                 Toast.makeText(RecipesList.this, e.toString(), Toast.LENGTH_LONG).show();
             }
         }

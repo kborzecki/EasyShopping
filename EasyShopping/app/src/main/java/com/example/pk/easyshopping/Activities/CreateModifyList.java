@@ -32,12 +32,15 @@ public class CreateModifyList extends AppCompatActivity {
     private EditText mItemName;
     private RecyclerView mRecyclerView;
     private ProductsAdapter mProductsAdapter;
-    private ImageButton mButtonAddItem;
     private boolean modify = false;
     private String modifyShoppingListName = null;
     ShoppingList shoppingList;
     ArrayList<ShoppingListItem> productsListToSave;
     ArrayList<ShoppingListItem> productsList = null;
+
+    private void ShowToastAlert(String text) {
+        Toast.makeText(CreateModifyList.this, text, Toast.LENGTH_SHORT).show();
+    }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             =   new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -53,9 +56,9 @@ public class CreateModifyList extends AppCompatActivity {
                             prefsEditor.commit();
                         }
                         if(mListName.getText().toString().equals("")){
-                            Toast.makeText(CreateModifyList.this, "Podaj nazwę listy!", Toast.LENGTH_SHORT).show();
+                            ShowToastAlert("Podaj nazwe listy");
                         } else if (mPrefs.contains(mListName.getText().toString())) {
-                            Toast.makeText(CreateModifyList.this, "Lista o takiej nazwie już istnieje.", Toast.LENGTH_SHORT).show();
+                            ShowToastAlert("Lista o takiej nazwie już istnieje.");
                         } else {
                             shoppingList = new ShoppingList(mListName.getText().toString(), productsListToSave);
                             shoppingList.updateNumberOfBoughtElements();
@@ -72,7 +75,7 @@ public class CreateModifyList extends AppCompatActivity {
                             finish();
                         }
                     } else {
-                        Toast.makeText(CreateModifyList.this, "Nie można utworzyć listy bez zawartości.", Toast.LENGTH_SHORT).show();
+                        ShowToastAlert("Nie można utworzyć listy bez zawartości.");
                     }
                     return true;
                 case R.id.action_cancel:
@@ -127,7 +130,7 @@ public class CreateModifyList extends AppCompatActivity {
         }
 
         mItemName = (EditText) findViewById(R.id.et_add_item);
-        mButtonAddItem = (ImageButton) findViewById(R.id.ib_add_item);
+        ImageButton mButtonAddItem = (ImageButton) findViewById(R.id.ib_add_item);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_create_modify_list);
         LinearLayoutManager layoutManager

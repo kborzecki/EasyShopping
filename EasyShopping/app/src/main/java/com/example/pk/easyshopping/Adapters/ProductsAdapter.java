@@ -19,7 +19,7 @@ import java.util.ArrayList;
  * Created by Lagger on 2017-06-17.
  */
 
-public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyHolder>{
+public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.CustomViewHolder> {
 
     private Context context;
     private ArrayList<ShoppingListItem> data = new ArrayList<>();
@@ -33,19 +33,18 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyHold
     }
 
     @Override
-    public ProductsAdapter.MyHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+    public CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         Context context = viewGroup.getContext();
         int layoutIdForListItem = R.layout.shopping_list_item_item;
         LayoutInflater inflater = LayoutInflater.from(context);
-        boolean shouldAttachToParentImmediately = false;
 
-        View view = inflater.inflate(layoutIdForListItem, viewGroup, shouldAttachToParentImmediately);
+        View view = inflater.inflate(layoutIdForListItem, viewGroup, false);
 
-        return new MyHolder(view);
+        return new CustomViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ProductsAdapter.MyHolder holder, final int position) {
+    public void onBindViewHolder(CustomViewHolder holder, final int position) {
         ShoppingListItem current = data.get(position);
         //Log.i("Produkt", current.name);
         holder.tvShoppingListItem.setText(current.name);
@@ -57,12 +56,12 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyHold
         return data.size();
     }
 
-    class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView tvShoppingListItem;
         ImageButton ibRemoveItem;
 
-        MyHolder(View itemView) {
+        CustomViewHolder(View itemView) {
             super(itemView);
             tvShoppingListItem = (TextView) itemView.findViewById(R.id.tv_shopping_list_item_name);
             ibRemoveItem = (ImageButton) itemView.findViewById(R.id.ib_remove_item);

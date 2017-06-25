@@ -17,7 +17,7 @@ import com.example.pk.easyshopping.R;
  * Created by Lagger on 2017-06-24.
  */
 
-public class DetailedShoppingListAdapter extends RecyclerView.Adapter<DetailedShoppingListAdapter.MyHolder>{
+public class DetailedShoppingListAdapter extends RecyclerView.Adapter<DetailedShoppingListAdapter.CustomViewHolder> {
 
     private Context context;
     private ShoppingList data;
@@ -31,14 +31,14 @@ public class DetailedShoppingListAdapter extends RecyclerView.Adapter<DetailedSh
     }
 
     @Override
-    public DetailedShoppingListAdapter.MyHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+    public CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         Context context = viewGroup.getContext();
         int layoutIdForListItem = R.layout.detailed_shopping_list_item_item;
         LayoutInflater inflater = LayoutInflater.from(context);
         boolean shouldAttachToParentImmediately = false;
 
         View view = inflater.inflate(layoutIdForListItem, viewGroup, shouldAttachToParentImmediately);
-        final DetailedShoppingListAdapter.MyHolder holder = new DetailedShoppingListAdapter.MyHolder(view);
+        final CustomViewHolder holder = new CustomViewHolder(view);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,7 +49,7 @@ public class DetailedShoppingListAdapter extends RecyclerView.Adapter<DetailedSh
     }
 
     @Override
-    public void onBindViewHolder(DetailedShoppingListAdapter.MyHolder holder, final int position) {
+    public void onBindViewHolder(CustomViewHolder holder, final int position) {
         ShoppingListItem current = data.get(position);
 
         holder.tvShoppingListItem.setText(current.name);
@@ -72,13 +72,13 @@ public class DetailedShoppingListAdapter extends RecyclerView.Adapter<DetailedSh
         return data.size();
     }
 
-    class MyHolder extends RecyclerView.ViewHolder {
+    class CustomViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvShoppingListItem;
         CheckBox cbIsBought;
 
 
-        MyHolder(View itemView) {
+        CustomViewHolder(View itemView) {
             super(itemView);
             tvShoppingListItem = (TextView) itemView.findViewById(R.id.tv_detailed_shopping_list_item_name);
             cbIsBought = (CheckBox) itemView.findViewById(R.id.cb_detailed_shopping_list_item_bought);

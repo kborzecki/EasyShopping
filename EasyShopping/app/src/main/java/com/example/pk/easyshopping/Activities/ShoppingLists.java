@@ -10,7 +10,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.example.pk.easyshopping.Adapters.ShoppingListsAdapter;
 import com.example.pk.easyshopping.Models.ShoppingList;
@@ -25,7 +24,6 @@ public class ShoppingLists extends AppCompatActivity {
     SharedPreferences mPrefs;
     SharedPreferences.Editor prefsEditor;
     private ArrayList<ShoppingList> shoppingListsData = new ArrayList<>();
-    private TextView mShoppingLists;
     private RecyclerView mRecyclerView;
     private ShoppingListsAdapter mShoppingListsAdapter;
 
