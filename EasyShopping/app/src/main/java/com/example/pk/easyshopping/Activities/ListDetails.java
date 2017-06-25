@@ -10,6 +10,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -30,6 +31,8 @@ public class ListDetails extends AppCompatActivity {
     private TextView mDetailedShoppingListName;
     private String shoppingListName = null;
     private ShoppingList shoppingList;
+
+    private boolean removed = false;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -54,6 +57,8 @@ public class ListDetails extends AppCompatActivity {
                             dialog.dismiss();
                             prefsEditor.remove(shoppingListName);
                             prefsEditor.commit();
+
+                            removed = true;
 
                             Context context2 = ListDetails.this;
                             Intent myIntent2 = new Intent(context2, ShoppingLists.class);
@@ -125,7 +130,8 @@ public class ListDetails extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        saveListToSharedPreferences();
+        if(!removed)
+            saveListToSharedPreferences();
     }
 
     private void initViews(){
