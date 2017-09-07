@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+<!--
+    <item
+        android:enabled="true"
+        android:id="@+id/action_add_to_existing_list_from_ingredients"
+        android:icon="@drawable/ic_library_add_black_24dp"
+        android:title="@string/add_to_existing_list_from_ingredients" />
+        -->
+
+    <item
+        android:enabled="true"
+        android:id="@+id/action_create_new_list_from_ingredients"
+        android:icon="@drawable/ic_note_add_black_24dp"
+        android:title="@string/create_new_list_from_ingredients" />
+
+
+
+</menu>

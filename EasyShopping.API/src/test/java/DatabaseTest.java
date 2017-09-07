@@ -26,14 +26,16 @@ public class DatabaseTest {
         Database db = new Database();
 
         BasicDBObject findRecipe = (BasicDBObject) db.FindFirstRecipe();
-        int prevLikedValue = Integer.parseInt(findRecipe.getString("liked"));
+        double prevLikedValue = Double.parseDouble(findRecipe.getString("liked"));
+
 
         db.IncrementLikedValue(findRecipe.getString("_id"));
 
         findRecipe = (BasicDBObject) db.FindFirstRecipe();
-        int afterUpdateLikedValue = Integer.parseInt(findRecipe.getString("liked"));
+        double afterUpdateLikedValue= Double.parseDouble(findRecipe.getString("liked"));
 
-        assertEquals(prevLikedValue+1, afterUpdateLikedValue);
+
+        assertEquals(prevLikedValue+1, afterUpdateLikedValue, 0.1);
 
     }
 

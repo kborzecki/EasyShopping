@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ciezczak.mateusz.easyshopping">
+    package="com.example.pk.easyshopping">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -8,17 +10,39 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".Activities.ShoppingLists" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Activities.RecipesList"
+            android:parentActivityName=".Activities.ShoppingLists"
+            android:screenOrientation="portrait">
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.ShoppingLists" />
+        </activity>
+        <activity
+            android:name=".Activities.DetailedRecipe"
+            android:parentActivityName=".Activities.RecipesList"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.RecipesList" />
+        </activity>
+        <activity android:name=".Activities.ListDetails" android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Activities.CreateModifyList"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".Activities.IngredientsList" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
